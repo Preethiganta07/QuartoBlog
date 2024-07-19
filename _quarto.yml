@@ -1,0 +1,21 @@
+project:
+  type: website
+
+website:
+  title: "Preethi Ganta"
+  navbar:
+    right:
+      - about.qmd
+      - icon: linkedin
+        href: https://www.linkedin.com/in/preethi-g-4b414b28b
+      - icon: github
+        href: https://github.com/Preethiganta07
+      - icon: twitter
+        href: https://twitter.com
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+
+

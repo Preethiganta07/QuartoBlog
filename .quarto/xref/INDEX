@@ -1,0 +1,34 @@
+{
+  "posts/welcome/Cv.qmd": {
+    "Cv.tex": "2cd7d205",
+    "Cv.html": "d407f619"
+  },
+  "index.qmd": {
+    "index.html": "9aca0f56"
+  },
+  "posts/post-with-code/index.qmd": {
+    "index.html": "1192e3f9"
+  },
+  "posts/Iris Data/Report.qmd": {
+    "Report.html": "3f171ace"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "fe87d7ed"
+  },
+  "about.qmd": {
+    "about.html": "9b199200"
+  },
+  "posts/projects/index.qmd": {
+    "index.html": "bd10af8a"
+  },
+  "posts/welcome/cv/Cv.qmd": {
+    "Cv.tex": "6083dc64"
+  },
+  "posts/cv/Cv.qmd": {
+    "Cv.html": "574baeb0",
+    "Cv.tex": "a5f938e6"
+  },
+  "posts/wine data/wine.qmd": {
+    "wine.html": "43061d67"
+  }
+}

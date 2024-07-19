@@ -1,0 +1,18 @@
+---
+title: "About"
+image: preethi.png
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/preethi-g-4b414b28b
+    - icon: github
+      text: Github
+      href: https://github.com/Preethiganta07
+
+---
+
+About Me 
+
+

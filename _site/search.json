@@ -1,0 +1,268 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Sciencist",
+    "section": "",
+    "text": "Report On Wine Data\n\n\n\n\n\n\n\n\n\n\n\nJul 26, 2024\n\n\nPreethi Ganta\n\n\n\n\n\n\n\n\n\n\n\n\nReport On Iris Data\n\n\n\n\n\n\ncode\n\n\nAnalysis\n\n\n\n\n\n\n\n\n\nJul 19, 2024\n\n\nPreethi Ganta\n\n\n\n\n\n\n\n\n\n\n\n\nGanta Preethi\n\n\n\n\n\n\n\n\n\n\n\nJun 28, 2024\n\n\nGanta Preethi\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJun 27, 2024\n\n\nPreethi Ganta\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "About Me"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Extrating the data from the data base",
+    "section": "",
+    "text": "import pandas as pd import requests import psycopg2 from io import BytesIO from sqlalchemy import create_engine\ndef download_file_to_memory(url): response = requests.get(url, verify=False) # Disable SSL verification response.raise_for_status() # Check if the request was successful return BytesIO(response.content)\ndef extract_data_from_excel(file_content): df = pd.read_excel(file_content, skiprows=7, sheet_name=None) return df\ndef clean_data(df): if df is None: print(“No data to clean”) return None\ntry:\n    # Example data cleaning steps:\n    df = df.drop_duplicates()  # Remove duplicate rows\n    df = df.fillna(0)  # Fill missing values with 0\n\n    # Convert float columns to percentages\n    float_columns = df.select_dtypes(include=['float64'])\n    for col in float_columns:\n        df[col] = round(df[col] * 100, 2)\n        df[col] = df[col].astype(str) + '%'\n    return df\nexcept Exception as e:\n    print(f\"Error during data cleaning: {e}\")\n    return None\ndef main(url): # Step 1: Download the Excel file to memory file_content = download_file_to_memory(url) print(“Downloaded the file to memory”)\n# Step 2: Extract data from the Excel file\ndfs = extract_data_from_excel(file_content)\nprint(f\"Extracted data from Excel: {list(dfs.keys())}\\n\")\n\ntry:\n    conn = psycopg2.connect(\n        database=\"mydb\", user='postgres', password='0726', host='localhost', port='5432')\n    conn.autocommit = True\n    cursor = conn.cursor()\n    print(\"Database connected successfully\")\n\n    connection_string = \"postgresql+psycopg2://postgres:0726@localhost:5432/mydb\"\n    engine = create_engine(connection_string)\n    print(\"Engine created\")\n\n    for sheet_name, df in dfs.items():\n        table_name = input(f\"Enter table name for sheet '{sheet_name}': \")\n\n        # Clean the data\n        df = clean_data(df)\n        print(f\"Cleaned data for sheet '{sheet_name}'\")\n\n        # Write the DataFrame to the database\n        df.to_sql(table_name, engine, if_exists='replace', index=False)\n        print(f\"DataFrame from sheet '{sheet_name}' written to table '{table_name}'\")\n\n        # Execute a query to confirm the data was inserted\n        sql_query = f\"SELECT * FROM {table_name};\"\n        print(f\"Executing query for table '{table_name}'\")\n        data = pd.read_sql_query(sql_query, engine)\n        print(data)\n\n    print(\"Executing query\")\nexcept psycopg2.Error as e:\n    print(\"Error connecting to PostgresSQL database:\", e)\nfinally:\n    if conn is not None:\n        conn.close()\n        print(\"Database connection closed.\")\nif name == “main”: url = input(“Enter the URL of the Excel file:”) main(url)"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About Me"
+  },
+  {
+    "objectID": "posts/welcome/Cv.html",
+    "href": "posts/welcome/Cv.html",
+    "title": "Ganta Preethi’s Resume",
+    "section": "",
+    "text": "Experienced and dedicated Data Analyst with several years of experience identifying efficiencies and problem areas within data streams while communicating needs for projects. Adept at receiving and monitoring data from multiple streams, including Access, SQL, and Excel data sources. Ability to synthesize quantitative information and interact effectively with colleagues and clients. Proven track record of generating summary documents for senior management for monthly and quarterly audit and compliance reporting."
+  },
+  {
+    "objectID": "posts/welcome/Cv.html#profile",
+    "href": "posts/welcome/Cv.html#profile",
+    "title": "Ganta Preethi’s Resume",
+    "section": "",
+    "text": "Experienced and dedicated Data Analyst with several years of experience identifying efficiencies and problem areas within data streams while communicating needs for projects. Adept at receiving and monitoring data from multiple streams, including Access, SQL, and Excel data sources. Ability to synthesize quantitative information and interact effectively with colleagues and clients. Proven track record of generating summary documents for senior management for monthly and quarterly audit and compliance reporting."
+  },
+  {
+    "objectID": "posts/welcome/Cv.html#employment-history",
+    "href": "posts/welcome/Cv.html#employment-history",
+    "title": "Ganta Preethi’s Resume",
+    "section": "Employment History",
+    "text": "Employment History\n\nCompleted internship on Python for Data Science in 1Stop.ai.\nCompleted internship on Cyber Security in 1Stop.ai."
+  },
+  {
+    "objectID": "posts/welcome/Cv.html#education",
+    "href": "posts/welcome/Cv.html#education",
+    "title": "Ganta Preethi’s Resume",
+    "section": "Education",
+    "text": "Education\nMaster of Information Assurance and Systems, Wilmington University, Wilmington\n\nGraduated in the top 5% of my class.\nGPA: 3.95 (Till Now)\n\nBachelor of Computer Sciences, Bapatla Women’s Engineering College, Bapatla\n\nGPA: 3.91"
+  },
+  {
+    "objectID": "posts/welcome/Cv.html#projects",
+    "href": "posts/welcome/Cv.html#projects",
+    "title": "Ganta Preethi’s Resume",
+    "section": "Projects",
+    "text": "Projects\n\nMouseLess Cursor using Facial Movements\nThe main objective of mouseless cursor control using facial movement is to provide an alternative method for computer users who are unable to use a traditional mouse due to physical limitations or disabilities. By using facial movements, users can more easily navigate their computer screens.\n\n\nObject Tracking Using Camshift Algorithm\nIt is an application of deep learning which is used to develop a unique identification for each of the initial detections and then track the detected objects as they move around frames in video.\n\n\nAutomatic Text Generation Using LSTM\nLSTM-based automatic text generation involves training a neural network to learn patterns in a dataset and generate new text based on those patterns. The objective is to minimize the difference between the generated and actual text using a loss function."
+  },
+  {
+    "objectID": "posts/welcome/Cv.html#details",
+    "href": "posts/welcome/Cv.html#details",
+    "title": "Ganta Preethi’s Resume",
+    "section": "Details",
+    "text": "Details\n\nEmail: preethiganta007@gmail.com\nContact: +1 (302) 409-5927\nLinkedIn: https://www.linkedin.com/in/preethi-g-4b414b28b"
+  },
+  {
+    "objectID": "posts/welcome/Cv.html#skills",
+    "href": "posts/welcome/Cv.html#skills",
+    "title": "Ganta Preethi’s Resume",
+    "section": "Skills",
+    "text": "Skills\n\nPython Programming\nC Programming\nSQL\nDBMS\nAWS\nLeadership Skills\nData Clean-ups\nPowerBI\nMicrosoft Office\nAgile Methodologies\nData Analytics\nGoogle Sheets"
+  },
+  {
+    "objectID": "posts/welcome/Cv.html#languages",
+    "href": "posts/welcome/Cv.html#languages",
+    "title": "Ganta Preethi’s Resume",
+    "section": "Languages",
+    "text": "Languages\n\nEnglish\nTelugu"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html",
+    "href": "posts/Iris Data/Report.html",
+    "title": "Report On Iris Data",
+    "section": "",
+    "text": "The above image shows the three species of iris there iris_setosa,iris_versicolor and iris_virginica\n\n\nHere, Dataset shows the class and features Class:-iris_setosa,iris_versicolor,iris_verginica Features:-Sepal_length,Sepal_width,petal_length,petal_width\n\n\nCode\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport nbformat\n\n# Read the .dat file\ndata = pd.read_csv('iris.data', delimiter=',')\ndata.to_excel('iris.xlsx', index=False)\nprint(data)\nnum_df = data.select_dtypes(include = 'number')\n\n\n     sepal length  sepal width  petal length  petal width           class\n0             5.1          3.5           1.4          0.2     Iris-setosa\n1             4.9          3.0           1.4          0.2     Iris-setosa\n2             4.7          3.2           1.3          0.2     Iris-setosa\n3             4.6          3.1           1.5          0.2     Iris-setosa\n4             5.0          3.6           1.4          0.2     Iris-setosa\n..            ...          ...           ...          ...             ...\n145           6.7          3.0           5.2          2.3  Iris-virginica\n146           6.3          2.5           5.0          1.9  Iris-virginica\n147           6.5          3.0           5.2          2.0  Iris-virginica\n148           6.2          3.4           5.4          2.3  Iris-virginica\n149           5.9          3.0           5.1          1.8  Iris-virginica\n\n[150 rows x 5 columns]"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#report-on-iris-data",
+    "href": "posts/Iris Data/Report.html#report-on-iris-data",
+    "title": "Report On Iris Data",
+    "section": "",
+    "text": "The above image shows the three species of iris there iris_setosa,iris_versicolor and iris_virginica ## Iris Dataset Here, Dataset shows the class and features Class:-iris_setosa,iris_versicolor,iris_verginica Features:-Sepal_length,Sepal_width,petal_length,petal_width\n\n\nCode\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport nbformat\n\n# Read the .dat file\ndata = pd.read_csv('iris.data', delimiter=',')\ndata.to_excel('iris.xlsx', index=False)\nprint(data)\nnum_df = data.select_dtypes(include = 'number')\n\n\n     sepal length  sepal width  petal length  petal width           class\n0             5.1          3.5           1.4          0.2     Iris-setosa\n1             4.9          3.0           1.4          0.2     Iris-setosa\n2             4.7          3.2           1.3          0.2     Iris-setosa\n3             4.6          3.1           1.5          0.2     Iris-setosa\n4             5.0          3.6           1.4          0.2     Iris-setosa\n..            ...          ...           ...          ...             ...\n145           6.7          3.0           5.2          2.3  Iris-virginica\n146           6.3          2.5           5.0          1.9  Iris-virginica\n147           6.5          3.0           5.2          2.0  Iris-virginica\n148           6.2          3.4           5.4          2.3  Iris-virginica\n149           5.9          3.0           5.1          1.8  Iris-virginica\n\n[150 rows x 5 columns]"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#box-plot",
+    "href": "posts/Iris Data/Report.html#box-plot",
+    "title": "Report On Iris Data",
+    "section": "Box Plot",
+    "text": "Box Plot\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"sepal width\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\nThe box plot provides a clear visual comparison of the sepal widths across the three Iris species: Iris-setosa has the widest range of sepal widths, with the highest median value and the greatest variability. Iris-versicolor has a narrower range of sepal widths with a lower median compared to Iris-setosa. Iris-virginica has a sepal width distribution similar to Iris-versicolor, with moderate variability and a comparable median value.\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"sepal length\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal length by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\nA box plot is a standardized way of displaying the distribution of data based on a five-number summary: minimum, first quartile (Q1), median, third quartile (Q3), and maximum. It also highlights outliers, if any. Box Plot Interpretation Iris-setosa:- Median (Q2): The central line inside the box represents the median sepal length. Interquartile Range (IQR): The box represents the range between the first quartile (Q1) and the third quartile (Q3). Whiskers: The lines extending from the box show the range of the data within 1.5 times the IQR from Q1 and Q3. Data points outside this range are considered outliers. Outliers: Points outside the whiskers, if any, represent outliers in the sepal length distribution. Iris-versicolor:- The median sepal length is higher than that of Iris-setosa. The IQR is larger, indicating more variability in sepal lengths. The whiskers and potential outliers provide insight into the spread and extremes of the data. Iris-virginica:- The median sepal length is the highest among the three species. The IQR is comparable to Iris-versicolor but larger than Iris-setosa, indicating substantial variability. The whiskers and any outliers show the spread and extremities of the sepal length for this species. The box plot provides a clear visual comparison of the sepal lengths across the three Iris species: Iris-setosa has the shortest sepal lengths, with minimal variability. Iris-versicolor has moderate sepal lengths with greater variability compared to Iris-setosa. Iris-virginica has the longest sepal lengths with significant variability. This visualization is useful for understanding the distribution and spread of sepal lengths within and across the species, highlighting the central tendency and variability, as well as any potential outliers in the data.\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"petal width\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of petal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\nThe box plot provides a clear visual comparison of the petal widths across the three Iris species: Iris-setosa has the narrowest range of petal widths, with the lowest median value and the least variability. Iris-versicolor has a wider range of petal widths with a higher median compared to Iris-setosa. Iris-virginica has the widest range and the highest median value of petal widths, indicating significant variability within the species.\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"petal length\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of petal length by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\nThe box plot provides a clear visual comparison of the petal lengths across the three Iris species: Iris-setosa has the narrowest range of petal lengths, with the lowest median value and the least variability. Iris-versicolor has a wider range of petal lengths with a higher median compared to Iris-setosa. Iris-virginica has the widest range and the highest median value of petal lengths, indicating significant variability within the species. This visualization is useful for understanding the distribution and spread of petal lengths within and across the species, highlighting the central tendency and variability, as well as any potential outliers in the data.\n\n\nCode\n# Compute the correlation matrix\ncorrelation_matrix = num_df.corr()\n\n# Create a heatmap\nplt.figure(figsize=(8, 6))\nsns.heatmap(correlation_matrix, annot=True, cmap=\"coolwarm\", vmin=-1, vmax=1)\nplt.title(\"Correlation Matrix of Iris Dataset\")\nplt.show()\n\nsns.pairplot(data, hue=\"class\", palette=\"Set2\", markers=[\"o\", \"s\", \"D\"])\n\n# Set the title for the entire plot\nplt.suptitle(\"Scatter Plot Matrix of Iris Dataset\", y=1.02)\nplt.show()"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#scatter",
+    "href": "posts/Iris Data/Report.html#scatter",
+    "title": "Report On Iris Data",
+    "section": "Scatter",
+    "text": "Scatter\n\n\nCode\n# Read the .dat file\ndef scatter_plot_for_each_column(num_df):\n    # Plot scatter plots for each pair of numeric columns\n    color = ['r','g']\n    color_map = [color[i%len(color)]for i in range(len(num_df))]\n    for column1 in num_df.columns:\n        for column2 in num_df.columns:\n            if column1 != column2:\n                plt.figure(figsize=(8, 6))\n                plt.scatter(num_df[column1], num_df[column2], alpha=0.7)\n                plt.title(f'Scatter Plot of {column1} vs {column2}')\n                plt.xlabel(column1)\n                plt.ylabel(column2)\n                plt.show()\n# Scatter Plot\nscatter_plot_for_each_column(num_df)"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#line-plot",
+    "href": "posts/Iris Data/Report.html#line-plot",
+    "title": "Report On Iris Data",
+    "section": "line plot",
+    "text": "line plot\n\n\nCode\ndef line_plot_for_each_column(num_df):\n    # Plot the data for each column of data\n    plt.figure(figsize=(10, 6))\n\n    for column in num_df.columns:\n        if pd.api.types.is_numeric_dtype(num_df[column]):\n            plt.plot(num_df.index, num_df[column], marker='o', label=column)\n\n    plt.title('Line Plot of Numeric Columns')\n    plt.xlabel('Index')\n    plt.ylabel('Values')\n    plt.legend()\n    plt.show()\n# Line_plot\nline_plot_for_each_column(num_df)"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#histogram-plot",
+    "href": "posts/Iris Data/Report.html#histogram-plot",
+    "title": "Report On Iris Data",
+    "section": "Histogram Plot",
+    "text": "Histogram Plot\n\n\nCode\n# Set up the FacetGrid for Sepal Length\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"sepal length\", bins=10, color=\"yellow\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Sepal Length by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\n\nRelation between the class and sepal width\n\nThis plot shows the distribution of sepal widths for each species of the Iris flower. Each subplot represents a different species, allowing for a comparison of sepal width distributions.\n\n Iris-setosa:-\n\nThe sepal widths are mostly between 3.0 and 4.0 cm. This species tends to have wider sepals compared to the other two. Iris-versicolor:-\n\n\n\nThe sepal widths are distributed between 2.5 and 3.5 cm, with a peak around 2.8 to 3.0 cm.\n\n Iris-virginica:-\n\nThe sepal widths range from 2.5 to 3.5 cm, with a slight peak around 3.0 cm, similar to Iris-versicolor.\n\n\n\n\nCode\n# Set up the FacetGrid for Sepal Width\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"sepal width\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Sepal Width by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Set up the FacetGrid for Petal Length\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"petal length\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Petal Length by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Set up the FacetGrid for Petal Width\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"petal width\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Petal Width by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Scatter plot for Sepal Length vs. Sepal Width\nsns.scatterplot(data, x=\"sepal length\", y=\"sepal width\", hue=\"class\", palette=\"Set1\", edgecolor=\"black\")\nplt.title(\"Sepal Length vs. Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Scatter plot for Petal Length vs. Petal Width\nsns.scatterplot(data, x=\"petal length\", y=\"petal width\", hue=\"class\", palette=\"Set1\", edgecolor=\"black\")\nplt.title(\"Petal Length vs. Petal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Scatter plot for Sepal Length vs. Petal Length\nsns.scatterplot(data, x=\"sepal length\", y=\"petal length\", hue=\"class\", palette=\"Set1\", edgecolor=\"black\")\nplt.title(\"Sepal Length vs. Petal Length by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"sepal width\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"sepal length\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"petal width\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"petal length\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#relation-between-the-class-and-sepal",
+    "href": "posts/Iris Data/Report.html#relation-between-the-class-and-sepal",
+    "title": "Report On Iris Data",
+    "section": "Relation between the class and sepal",
+    "text": "Relation between the class and sepal\nThis plot shows the distribution of sepal widths for each species of the Iris flower. Each subplot represents a different species, allowing for a comparison of sepal width distributions. Iris-setosa:- The sepal widths are mostly between 3.0 and 4.0 cm. This species tends to have wider sepals compared to the other two. Iris-versicolor:- The sepal widths are distributed between 2.5 and 3.5 cm, with a peak around 2.8 to 3.0 cm. Iris-virginica:- The sepal widths range from 2.5 to 3.5 cm, with a slight peak around 3.0 cm, similar to Iris-versicolor.\n\n\nCode\n# Set up the FacetGrid for Sepal Width\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"sepal width\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Sepal Width by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Set up the FacetGrid for Petal Length\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"petal length\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Petal Length by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Set up the FacetGrid for Petal Width\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"petal width\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Petal Width by Species\", y=1.05)\nplt.show()"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#relation-between-the-class-and-sepal-width",
+    "href": "posts/Iris Data/Report.html#relation-between-the-class-and-sepal-width",
+    "title": "Report On Iris Data",
+    "section": "Relation between the class and sepal width",
+    "text": "Relation between the class and sepal width\nThis plot shows the distribution of sepal widths for each species of the Iris flower. Each subplot represents a different species, allowing for a comparison of sepal width distributions. ### Iris-setosa:- The sepal widths are mostly between 3.0 and 4.0 cm. This species tends to have wider sepals compared to the other two. ### Iris-versicolor:- The sepal widths are distributed between 2.5 and 3.5 cm, with a peak around 2.8 to 3.0 cm. ### Iris-virginica:- The sepal widths range from 2.5 to 3.5 cm, with a slight peak around 3.0 cm, similar to Iris-versicolor.\n\n\nCode\n# Set up the FacetGrid for Sepal Width\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"sepal width\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Sepal Width by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Set up the FacetGrid for Petal Length\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"petal length\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Petal Length by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Set up the FacetGrid for Petal Width\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"petal width\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Petal Width by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Scatter plot for Sepal Length vs. Sepal Width\nsns.scatterplot(data, x=\"sepal length\", y=\"sepal width\", hue=\"class\", palette=\"Set1\", edgecolor=\"black\")\nplt.title(\"Sepal Length vs. Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Scatter plot for Petal Length vs. Petal Width\nsns.scatterplot(data, x=\"petal length\", y=\"petal width\", hue=\"class\", palette=\"Set1\", edgecolor=\"black\")\nplt.title(\"Petal Length vs. Petal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Scatter plot for Sepal Length vs. Petal Length\nsns.scatterplot(data, x=\"sepal length\", y=\"petal length\", hue=\"class\", palette=\"Set1\", edgecolor=\"black\")\nplt.title(\"Sepal Length vs. Petal Length by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"sepal width\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"sepal length\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"petal width\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"petal length\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#iris-setosa-",
+    "href": "posts/Iris Data/Report.html#iris-setosa-",
+    "title": "Report On Iris Data",
+    "section": "Iris-setosa:-",
+    "text": "Iris-setosa:-\nThe sepal widths are mostly between 3.0 and 4.0 cm. This species tends to have wider sepals compared to the other two."
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#iris-versicolor-",
+    "href": "posts/Iris Data/Report.html#iris-versicolor-",
+    "title": "Report On Iris Data",
+    "section": "Iris-versicolor:-",
+    "text": "Iris-versicolor:-\nThe sepal widths are distributed between 2.5 and 3.5 cm, with a peak around 2.8 to 3.0 cm."
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#iris-virginica-",
+    "href": "posts/Iris Data/Report.html#iris-virginica-",
+    "title": "Report On Iris Data",
+    "section": "Iris-virginica:-",
+    "text": "Iris-virginica:-\nThe sepal widths range from 2.5 to 3.5 cm, with a slight peak around 3.0 cm, similar to Iris-versicolor.\n\n\nCode\n# Set up the FacetGrid for Sepal Width\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"sepal width\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Sepal Width by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Set up the FacetGrid for Petal Length\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"petal length\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Petal Length by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Set up the FacetGrid for Petal Width\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"petal width\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Petal Width by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Scatter plot for Sepal Length vs. Sepal Width\nsns.scatterplot(data, x=\"sepal length\", y=\"sepal width\", hue=\"class\", palette=\"Set1\", edgecolor=\"black\")\nplt.title(\"Sepal Length vs. Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Scatter plot for Petal Length vs. Petal Width\nsns.scatterplot(data, x=\"petal length\", y=\"petal width\", hue=\"class\", palette=\"Set1\", edgecolor=\"black\")\nplt.title(\"Petal Length vs. Petal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Scatter plot for Sepal Length vs. Petal Length\nsns.scatterplot(data, x=\"sepal length\", y=\"petal length\", hue=\"class\", palette=\"Set1\", edgecolor=\"black\")\nplt.title(\"Sepal Length vs. Petal Length by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"sepal width\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"sepal length\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"petal width\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"petal length\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#descriptive-statistics",
+    "href": "posts/Iris Data/Report.html#descriptive-statistics",
+    "title": "Report On Iris Data",
+    "section": "Descriptive Statistics",
+    "text": "Descriptive Statistics\n\n\nCode\ndef descriptive_statistics(num):\n    # Calculate and print descriptive statistics for each numeric column\n    print(\"Descriptive Statistics:\\n\")\n    for column in num.columns:\n        print(f\"Statistics for {column}\")\n        print('--------------------------------')\n        print(f\"Mean: {num[column].mean()}\")\n        print(f\"Median: {num[column].median()}\")\n        print(f\"Mode: {num[column].mode().iloc[0]}\")\n        print(f\"Standard Deviation: {num[column].std()}\")\n        print(f\"Variance: {num[column].var()}\")\n        print(f\"Minimum: {num[column].min()}\")\n        print(f\"Maximum: {num[column].max()}\")\n        print(f\"Count: {num[column].count()}\")\n#calling descriptive statistics\ndescriptive_statistics(num_df)\n\n\nDescriptive Statistics:\n\nStatistics for sepal length\n--------------------------------\nMean: 5.843333333333334\nMedian: 5.8\nMode: 5.0\nStandard Deviation: 0.828066127977863\nVariance: 0.6856935123042507\nMinimum: 4.3\nMaximum: 7.9\nCount: 150\nStatistics for sepal width\n--------------------------------\nMean: 3.0540000000000003\nMedian: 3.0\nMode: 3.0\nStandard Deviation: 0.4335943113621737\nVariance: 0.1880040268456376\nMinimum: 2.0\nMaximum: 4.4\nCount: 150\nStatistics for petal length\n--------------------------------\nMean: 3.758666666666666\nMedian: 4.35\nMode: 1.5\nStandard Deviation: 1.7644204199522626\nVariance: 3.113179418344519\nMinimum: 1.0\nMaximum: 6.9\nCount: 150\nStatistics for petal width\n--------------------------------\nMean: 1.1986666666666668\nMedian: 1.3\nMode: 0.2\nStandard Deviation: 0.7631607417008411\nVariance: 0.582414317673378\nMinimum: 0.1\nMaximum: 2.5\nCount: 150\n\n\n\nHistogram Plot"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#plot-for-sepal-length",
+    "href": "posts/Iris Data/Report.html#plot-for-sepal-length",
+    "title": "Report On Iris Data",
+    "section": "Plot for Sepal Length",
+    "text": "Plot for Sepal Length\n\n\nCode\n# Set up the FacetGrid for Sepal Length\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"sepal length\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Sepal Length by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\nThe above plot shows the distribution of sepal lengths for each species of the Iris flower (setosa, versicolor, and virginica). Each subplot represents a different species, allowing for an easy comparison of sepal length distributions between the species. Iris-setosa:-The sepal lengths are mostly concentrated between 4.5 and 5.5 cm. The distribution appears to be more tightly clustered compared to the other species. Iris-versicolor:-The sepal lengths are more spread out, typically ranging from 5.0 to 7.0 cm, with a peak around 5.5 to 6.0 cm. Iris-virginica:- The sepal lengths show a broader distribution, generally ranging from 6.0 to 7.5 cm. This species has the longest sepals on average.\n\nPlot for Sepal Width\n\n\nCode\n# Set up the FacetGrid for Sepal Width\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"sepal width\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Sepal Width by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\nThe above plot shows the distribution of sepal width for each iris class. Each subplot represents a different species, allowing comparison of sepal width distribution. Iris-setosa:-The sepal width are mostly between 3.0 and 4.0 cm. This iris_setosa tends to have wider sepals compared to the other two. Iris-versicolor:-The sepal width are distributed between 2.5 and 3.5 cm, with a peak around 2.8 to 3.0 cm. Iris-virginica:-The sepal widths range from 2.5 to 3.5 cm, with a slight peak around 3.0 cm, similar to Iris-versicolor.\n\n\nPlot for Petal Length\n\n\nCode\n# Set up the FacetGrid for Petal Length\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"petal length\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Petal Length by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\nThe above plot shows the distribution of petal lengths for each species of the Iris flower.\nIris-setosa:- The petal lengths are mostly concentrated between 1.0 and 1.5 cm, indicating shorter petals for this species. Iris-versicolor:- The petal lengths are more spread out, typically ranging from 3.0 to 5.0 cm, with a peak around 4.0 to 4.5 cm. Iris-virginica:- The petal lengths show a broader distribution, generally ranging from 4.5 to 6.5 cm. This species has the longest petals on average.\n\n\nPlot for Petal width\n\n\nCode\n# Set up the FacetGrid for Petal Width\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"petal width\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Petal Width by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\nThe above plot shows the distribution of petal widths for each species of the Iris flower.\nIris-setosa:- The petal widths are mostly concentrated between 0.1 and 0.3 cm, indicating narrower petals for this species. Iris-versicolor:- The petal widths are more spread out, typically ranging from 1.0 to 1.5 cm, with a peak around 1.3 cm. Iris-virginica:- The petal widths show a broader distribution, generally ranging from 1.5 to 2.5 cm. This species has the widest petals on average"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#plot-for-petal-length",
+    "href": "posts/Iris Data/Report.html#plot-for-petal-length",
+    "title": "Report On Iris Data",
+    "section": "Plot for Petal Length",
+    "text": "Plot for Petal Length\n\n\nCode\n# Set up the FacetGrid for Petal Length\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"petal length\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Petal Length by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\nThe above plot shows the distribution of petal lengths for each species of the Iris flower.\nIris-setosa:- \n\nThe petal lengths are mostly concentrated between 1.0 and 1.5 cm, indicating shorter petals for this species.\n\n Iris-versicolor:- \n\nThe petal lengths are more spread out, typically ranging from 3.0 to 5.0 cm, with a peak around 4.0 to 4.5 cm.\n\n Iris-virginica:- \n\nThe petal lengths show a broader distribution, generally ranging from 4.5 to 6.5 cm. This species has the longest petals on average.\n\n\n\nPlot for Petal width\n\n\nCode\n# Set up the FacetGrid for Petal Width\ng = sns.FacetGrid(data, col=\"class\", margin_titles=True, col_wrap=3)\ng.map(plt.hist, \"petal width\", bins=10, color=\"steelblue\", edgecolor=\"black\")\ng.fig.suptitle(\"Histogram of Petal Width by Species\", y=1.05)\nplt.show()\n\n\n\n\n\n\n\n\n\nThe above plot shows the distribution of petal widths for each species of the Iris flower.\nIris-setosa:- The petal widths are mostly concentrated between 0.1 and 0.3 cm, indicating narrower petals for this species. Iris-versicolor:- The petal widths are more spread out, typically ranging from 1.0 to 1.5 cm, with a peak around 1.3 cm. Iris-virginica:- The petal widths show a broader distribution, generally ranging from 1.5 to 2.5 cm. This species has the widest petals on average"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#scatter-plot",
+    "href": "posts/Iris Data/Report.html#scatter-plot",
+    "title": "Report On Iris Data",
+    "section": "Scatter Plot",
+    "text": "Scatter Plot\n\nHere i created a scatter plots to visualize the relationships between the features in the Iris dataset, with each species represented by a different color. We’ll create scatter plots for the following pairs of features:\n\n\nCode\n# Scatter plot for Sepal Length vs. Sepal Width\nsns.scatterplot(data, x=\"sepal length\", y=\"sepal width\", hue=\"class\", palette=\"Set1\", edgecolor=\"black\")\nplt.title(\"Sepal Length vs. Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Scatter plot for Petal Length vs. Petal Width\nsns.scatterplot(data, x=\"petal length\", y=\"petal width\", hue=\"class\", palette=\"Set1\", edgecolor=\"black\")\nplt.title(\"Petal Length vs. Petal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Scatter plot for Sepal Length vs. Petal Length\nsns.scatterplot(data, x=\"sepal length\", y=\"petal length\", hue=\"class\", palette=\"Set1\", edgecolor=\"black\")\nplt.title(\"Sepal Length vs. Petal Length by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"sepal width\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"sepal length\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"petal width\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Box plot\nsns.boxplot(data, x=\"class\", y=\"petal length\",hue='class', palette=\"Set3\")\nplt.title(\"Box Plot of Sepal Width by Species\")\nplt.show()"
+  },
+  {
+    "objectID": "posts/Iris Data/Report.html#iris-dataset",
+    "href": "posts/Iris Data/Report.html#iris-dataset",
+    "title": "Report On Iris Data",
+    "section": "",
+    "text": "Here, Dataset shows the class and features Class:-iris_setosa,iris_versicolor,iris_verginica Features:-Sepal_length,Sepal_width,petal_length,petal_width\n\n\nCode\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport nbformat\n\n# Read the .dat file\ndata = pd.read_csv('iris.data', delimiter=',')\ndata.to_excel('iris.xlsx', index=False)\nprint(data)\nnum_df = data.select_dtypes(include = 'number')\n\n\n     sepal length  sepal width  petal length  petal width           class\n0             5.1          3.5           1.4          0.2     Iris-setosa\n1             4.9          3.0           1.4          0.2     Iris-setosa\n2             4.7          3.2           1.3          0.2     Iris-setosa\n3             4.6          3.1           1.5          0.2     Iris-setosa\n4             5.0          3.6           1.4          0.2     Iris-setosa\n..            ...          ...           ...          ...             ...\n145           6.7          3.0           5.2          2.3  Iris-virginica\n146           6.3          2.5           5.0          1.9  Iris-virginica\n147           6.5          3.0           5.2          2.0  Iris-virginica\n148           6.2          3.4           5.4          2.3  Iris-virginica\n149           5.9          3.0           5.1          1.8  Iris-virginica\n\n[150 rows x 5 columns]"
+  },
+  {
+    "objectID": "posts/cv/Cv.html",
+    "href": "posts/cv/Cv.html",
+    "title": "Ganta Preethi",
+    "section": "",
+    "text": "Experienced and dedicated Data Analyst with several years of experience identifying efficiencies and problem areas within data streams while communicating needs for projects. Adept at receiving and monitoring data from multiple streams, including Access, SQL, and Excel data sources. Ability to synthesize quantitative information and interact effectively with colleagues and clients. Proven track record of generating summary documents for senior management for monthly and quarterly audit and compliance reporting."
+  },
+  {
+    "objectID": "posts/cv/Cv.html#profile",
+    "href": "posts/cv/Cv.html#profile",
+    "title": "Ganta Preethi",
+    "section": "",
+    "text": "Experienced and dedicated Data Analyst with several years of experience identifying efficiencies and problem areas within data streams while communicating needs for projects. Adept at receiving and monitoring data from multiple streams, including Access, SQL, and Excel data sources. Ability to synthesize quantitative information and interact effectively with colleagues and clients. Proven track record of generating summary documents for senior management for monthly and quarterly audit and compliance reporting."
+  },
+  {
+    "objectID": "posts/cv/Cv.html#employment-history",
+    "href": "posts/cv/Cv.html#employment-history",
+    "title": "Ganta Preethi",
+    "section": "Employment History",
+    "text": "Employment History\n\nCompleted internship on Python for Data Science in 1Stop.ai.\nCompleted internship on Cyber Security in 1Stop.ai."
+  },
+  {
+    "objectID": "posts/cv/Cv.html#education",
+    "href": "posts/cv/Cv.html#education",
+    "title": "Ganta Preethi",
+    "section": "Education",
+    "text": "Education\nMaster of Information Assurance and Systems, Wilmington University, Wilmington\n\nGraduated in the top 5% of my class.\nGPA: 3.95 (Till Now)\n\nBachelor of Computer Sciences, Bapatla Women’s Engineering College, Bapatla\n\nGPA: 3.91"
+  },
+  {
+    "objectID": "posts/cv/Cv.html#projects",
+    "href": "posts/cv/Cv.html#projects",
+    "title": "Ganta Preethi",
+    "section": "Projects",
+    "text": "Projects\n\nMouseLess Cursor using Facial Movements\nThe main objective of mouseless cursor control using facial movement is to provide an alternative method for computer users who are unable to use a traditional mouse due to physical limitations or disabilities. By using facial movements, users can more easily navigate their computer screens.\n\n\nObject Tracking Using Camshift Algorithm\nIt is an application of deep learning which is used to develop a unique identification for each of the initial detections and then track the detected objects as they move around frames in video.\n\n\nAutomatic Text Generation Using LSTM\nLSTM-based automatic text generation involves training a neural network to learn patterns in a dataset and generate new text based on those patterns. The objective is to minimize the difference between the generated and actual text using a loss function."
+  },
+  {
+    "objectID": "posts/cv/Cv.html#details",
+    "href": "posts/cv/Cv.html#details",
+    "title": "Ganta Preethi",
+    "section": "Details",
+    "text": "Details\n\nEmail: preethiganta007@gmail.com\nContact: +1 (302) 409-5927\nLinkedIn: https://www.linkedin.com/in/preethi-g-4b414b28b"
+  },
+  {
+    "objectID": "posts/cv/Cv.html#skills",
+    "href": "posts/cv/Cv.html#skills",
+    "title": "Ganta Preethi",
+    "section": "Skills",
+    "text": "Skills\n\nPython Programming\nC Programming\nSQL\nDBMS\nAWS\nLeadership Skills\nData Clean-ups\nPowerBI\nMicrosoft Office\nAgile Methodologies\nData Analytics\nGoogle Sheets"
+  },
+  {
+    "objectID": "posts/cv/Cv.html#languages",
+    "href": "posts/cv/Cv.html#languages",
+    "title": "Ganta Preethi",
+    "section": "Languages",
+    "text": "Languages\n\nEnglish\nTelugu"
+  },
+  {
+    "objectID": "posts/wine data/wine.html",
+    "href": "posts/wine data/wine.html",
+    "title": "Report On Wine Data",
+    "section": "",
+    "text": "Here the dataset shows the type of class and the quality of wine class :-1,2,3 It represent the Wine Quality Types of Alcohol:-Alcohol: Alcohol content. Malicacid: Malic acid content. ash: Ash content. Alcalinity_ofash: Alcalinity of ash. Magnesium: Magnesium content. Totalphenols: Total phenol content. Flavanoids: Flavanoid content. Nonflavanoidphenols: Non-flavanoid phenol content. Proanthocyanins: Proanthocyanin content. Colorintensity: Color intensity. Hue: Hue. OD280_0D315_of_diluted_wines: OD280/OD315 of diluted wines. Proline: Proline content.\n\n\nCode\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport nbformat\n\n# Read the .dat file\ndata = pd.read_csv('wine.data', delimiter=',')\ndata.to_excel('wine.xlsx', index=False)\nprint(data)\ncolumns = data.columns[data.columns != 'class']    \ngrpdata = data.groupby([\"class\"])\n\n\n     class  Alcohol  Malicacid   ash  Alcalinity_ofash  Magnesium  \\\n0        1    14.23       1.71  2.43              15.6        127   \n1        1    13.20       1.78  2.14              11.2        100   \n2        1    13.16       2.36  2.67              18.6        101   \n3        1    14.37       1.95  2.50              16.8        113   \n4        1    13.24       2.59  2.87              21.0        118   \n..     ...      ...        ...   ...               ...        ...   \n173      3    13.71       5.65  2.45              20.5         95   \n174      3    13.40       3.91  2.48              23.0        102   \n175      3    13.27       4.28  2.26              20.0        120   \n176      3    13.17       2.59  2.37              20.0        120   \n177      3    14.13       4.10  2.74              24.5         96   \n\n     Totalphenols  Flavanoids  Nonflavanoidphenols  Proanthocyanins  \\\n0            2.80        3.06                 0.28             2.29   \n1            2.65        2.76                 0.26             1.28   \n2            2.80        3.24                 0.30             2.81   \n3            3.85        3.49                 0.24             2.18   \n4            2.80        2.69                 0.39             1.82   \n..            ...         ...                  ...              ...   \n173          1.68        0.61                 0.52             1.06   \n174          1.80        0.75                 0.43             1.41   \n175          1.59        0.69                 0.43             1.35   \n176          1.65        0.68                 0.53             1.46   \n177          2.05        0.76                 0.56             1.35   \n\n     Colorintensity   Hue  0D280_0D315_of_diluted_wines  Proline  \n0              5.64  1.04                          3.92     1065  \n1              4.38  1.05                          3.40     1050  \n2              5.68  1.03                          3.17     1185  \n3              7.80  0.86                          3.45     1480  \n4              4.32  1.04                          2.93      735  \n..              ...   ...                           ...      ...  \n173            7.70  0.64                          1.74      740  \n174            7.30  0.70                          1.56      750  \n175           10.20  0.59                          1.56      835  \n176            9.30  0.60                          1.62      840  \n177            9.20  0.61                          1.60      560  \n\n[178 rows x 14 columns]"
+  },
+  {
+    "objectID": "posts/wine data/wine.html#wine-dataset",
+    "href": "posts/wine data/wine.html#wine-dataset",
+    "title": "Report On Wine Data",
+    "section": "",
+    "text": "Here the dataset shows the type of class and the quality of wine class :-1,2,3 It represent the Wine Quality Types of Alcohol:-Alcohol: Alcohol content. Malicacid: Malic acid content. ash: Ash content. Alcalinity_ofash: Alcalinity of ash. Magnesium: Magnesium content. Totalphenols: Total phenol content. Flavanoids: Flavanoid content. Nonflavanoidphenols: Non-flavanoid phenol content. Proanthocyanins: Proanthocyanin content. Colorintensity: Color intensity. Hue: Hue. OD280_0D315_of_diluted_wines: OD280/OD315 of diluted wines. Proline: Proline content.\n\n\nCode\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport nbformat\n\n# Read the .dat file\ndata = pd.read_csv('wine.data', delimiter=',')\ndata.to_excel('wine.xlsx', index=False)\nprint(data)\ncolumns = data.columns[data.columns != 'class']    \ngrpdata = data.groupby([\"class\"])\n\n\n     class  Alcohol  Malicacid   ash  Alcalinity_ofash  Magnesium  \\\n0        1    14.23       1.71  2.43              15.6        127   \n1        1    13.20       1.78  2.14              11.2        100   \n2        1    13.16       2.36  2.67              18.6        101   \n3        1    14.37       1.95  2.50              16.8        113   \n4        1    13.24       2.59  2.87              21.0        118   \n..     ...      ...        ...   ...               ...        ...   \n173      3    13.71       5.65  2.45              20.5         95   \n174      3    13.40       3.91  2.48              23.0        102   \n175      3    13.27       4.28  2.26              20.0        120   \n176      3    13.17       2.59  2.37              20.0        120   \n177      3    14.13       4.10  2.74              24.5         96   \n\n     Totalphenols  Flavanoids  Nonflavanoidphenols  Proanthocyanins  \\\n0            2.80        3.06                 0.28             2.29   \n1            2.65        2.76                 0.26             1.28   \n2            2.80        3.24                 0.30             2.81   \n3            3.85        3.49                 0.24             2.18   \n4            2.80        2.69                 0.39             1.82   \n..            ...         ...                  ...              ...   \n173          1.68        0.61                 0.52             1.06   \n174          1.80        0.75                 0.43             1.41   \n175          1.59        0.69                 0.43             1.35   \n176          1.65        0.68                 0.53             1.46   \n177          2.05        0.76                 0.56             1.35   \n\n     Colorintensity   Hue  0D280_0D315_of_diluted_wines  Proline  \n0              5.64  1.04                          3.92     1065  \n1              4.38  1.05                          3.40     1050  \n2              5.68  1.03                          3.17     1185  \n3              7.80  0.86                          3.45     1480  \n4              4.32  1.04                          2.93      735  \n..              ...   ...                           ...      ...  \n173            7.70  0.64                          1.74      740  \n174            7.30  0.70                          1.56      750  \n175           10.20  0.59                          1.56      835  \n176            9.30  0.60                          1.62      840  \n177            9.20  0.61                          1.60      560  \n\n[178 rows x 14 columns]"
+  }
+]

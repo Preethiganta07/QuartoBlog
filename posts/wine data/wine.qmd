@@ -1,0 +1,74 @@
+---
+title : "Report On Wine Data"
+image: image.png
+author: "Preethi Ganta"
+date: "07-26-2024"
+format : 
+    html :
+         code-fold : true
+jupyter : python3
+---
+# Report on Wine DataSet
+![**Wine**](image.png){width="500" fig-align="right"}<br>
+
+## Wine Dataset
+Here the dataset shows the type of class and the quality of wine<br>
+**class :-**<br>1,2,3 It represent the Wine Quality
+**Types of Alcohol:-**<br>**Alcohol:** Alcohol content.<br>
+**Malicacid**: Malic acid content.<br>
+**ash:** Ash content.<br>
+**Alcalinity_ofash:** Alcalinity of ash.<br>
+**Magnesium:** Magnesium content.<br>
+**Totalphenols:** Total phenol content.<br>
+**Flavanoids:** Flavanoid content.<br>
+**Nonflavanoidphenols:** Non-flavanoid phenol content.<br>
+**Proanthocyanins:** Proanthocyanin content.<br>
+**Colorintensity:** Color intensity.<br>
+**Hue:** Hue.<br>
+**OD280_0D315_of_diluted_wines:** OD280/OD315 of diluted wines.<br>
+**Proline:** Proline content.<br>
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import nbformat
+
+# Read the .dat file
+data = pd.read_csv('wine.data', delimiter=',')
+data.to_excel('wine.xlsx', index=False)
+print(data)
+columns = data.columns[data.columns != 'class']    
+grpdata = data.groupby(["class"])
+```
+# Descriptive Statistics
+```{python}
+def statistics(data):
+        #numeric_columns = data.select_dtypes(include=['number']).columns
+        #print(numeric_columns)
+        mean_value = grpdata.mean(numeric_only= True)
+        median_value = grpdata.median(numeric_only= True)
+        mode_value = grpdata.apply(lambda x: x.mode().iloc[0] if not x.mode().empty else None, include_groups=False)
+        #mode_value = grpdata.mode().iloc[0]         
+        # Using f-strings to format the output
+        print(f"Mean value for each column: \n{mean_value}")
+        print("==========================================================")
+        print(f"Median value for each column: \n{median_value}")
+        print('===========================================================')
+        print(f"Mode value for each column: \n{mode_value}")     
+        for column in columns:
+            total_sum = grpdata[column].sum()     
+            std_value = grpdata[column].std()     
+            count_value = grpdata[column].count()
+            max_value = grpdata[column].max()
+            min_value = grpdata[column].min()
+            print("=========================================================")
+            print(f"Total sum of '{column}': {total_sum}")
+            print(f"Standard Deviation of '{column}': {std_value}")
+            print(f"Count value of '{column}': {count_value}")
+            print(f"Max Value of '{column}': {max_value}")
+            print(f"Min Value of '{column}': {min_value}")
+        return mean_value, median_value, mode_value
+
+mean_value, median_value, mode_value = statistics(data)
+```

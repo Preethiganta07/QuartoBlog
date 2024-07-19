@@ -1,0 +1,90 @@
+---
+title: "Ganta Preethi"
+image: "preethi.png"
+author: "Ganta Preethi"
+date: "2024-06-28"
+tags: ["Data Scientist", "Resume"]
+format: 
+  pdf: 
+    documentclass: article
+    geometry:
+      - top=10mm
+      - left=15mm
+      - right=15mm
+      - bottom=5mm
+      - heightrounded
+    fontfamily: libertine
+    colorlinks: true
+    fontsize: '16'
+    include-in-header: 
+      text: |
+        \usepackage{multicol}
+        \usepackage{lipsum}
+        \usepackage{hyperref}
+        \usepackage{libertine}
+        \usepackage{wrapfig}
+        \pagestyle{empty}
+        \setlength{\multicolsep}{2pt plus 1.0pt minus 0.75pt}% 50% of original values
+        \setlength{\columnsep}{3em}
+
+---
+
+## Profile
+
+Experienced and dedicated Data Analyst with several years of experience identifying efficiencies and problem areas within data streams while communicating needs for projects. Adept at receiving and monitoring data from multiple streams, including Access, SQL, and Excel data sources. Ability to synthesize quantitative information and interact effectively with colleagues and clients. Proven track record of generating summary documents for senior management for monthly and quarterly audit and compliance reporting.
+
+## Employment History
+
+- Completed internship on Python for Data Science in 1Stop.ai.
+- Completed internship on Cyber Security in 1Stop.ai.
+
+## Education
+
+**Master of Information Assurance and Systems, Wilmington University, Wilmington**
+
+- Graduated in the top 5% of my class.
+- GPA: 3.95 (Till Now)
+
+**Bachelor of Computer Sciences, Bapatla Women's Engineering College, Bapatla**
+
+- GPA: 3.91
+
+## Projects
+
+### MouseLess Cursor using Facial Movements
+
+The main objective of mouseless cursor control using facial movement is to provide an alternative method for computer users who are unable to use a traditional mouse due to physical limitations or disabilities. By using facial movements, users can more easily navigate their computer screens.
+
+### Object Tracking Using Camshift Algorithm
+
+It is an application of deep learning which is used to develop a unique identification for each of the initial detections and then track the detected objects as they move around frames in video.
+
+### Automatic Text Generation Using LSTM
+
+LSTM-based automatic text generation involves training a neural network to learn patterns in a dataset and generate new text based on those patterns. The objective is to minimize the difference between the generated and actual text using a loss function.
+
+## Details
+
+- **Email:** [preethiganta007@gmail.com](mailto:preethiganta007@gmail.com)
+- **Contact:** +1 (302) 409-5927
+- **LinkedIn:** [https://www.linkedin.com/in/preethi-g-4b414b28b](https://www.linkedin.com/in/preethi-g-4b414b28b)
+
+## Skills
+
+- Python Programming
+- C Programming
+- SQL
+- DBMS
+- AWS
+- Leadership Skills
+- Data Clean-ups
+- PowerBI
+- Microsoft Office
+- Agile Methodologies
+- Data Analytics
+- Google Sheets
+
+## Languages
+
+- English
+- Telugu
