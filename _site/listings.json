@@ -2,10 +2,20 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/wine data/wine.html",
-      "/posts/Iris Data/Report.html",
       "/posts/cv/Cv.pdf",
+      "/posts/Car Price Prediction/Prediction.html",
+      "/posts/Iris Data/Report.html",
+      "/posts/wine data/wine.html",
       "/posts/welcome/index.html"
+    ]
+  },
+  {
+    "listing": "/QuartoBlog/index.html",
+    "items": [
+      "/QuartoBlog/posts/wine data/wine.html",
+      "/QuartoBlog/posts/Iris Data/Report.html",
+      "/QuartoBlog/posts/cv/Cv.pdf",
+      "/QuartoBlog/posts/welcome/index.html"
     ]
   }
 ]

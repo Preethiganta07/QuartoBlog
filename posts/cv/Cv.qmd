@@ -1,8 +1,7 @@
 ---
-title: "Ganta Preethi"
+title: "Ganta Preethi Resume"
 image: "preethi.png"
 author: "Ganta Preethi"
-date: "2024-06-28"
 tags: ["Data Scientist", "Resume"]
 format: 
   pdf: 
@@ -31,7 +30,7 @@ format:
 
 ## Profile
 
-Experienced and dedicated Data Analyst with several years of experience identifying efficiencies and problem areas within data streams while communicating needs for projects. Adept at receiving and monitoring data from multiple streams, including Access, SQL, and Excel data sources. Ability to synthesize quantitative information and interact effectively with colleagues and clients. Proven track record of generating summary documents for senior management for monthly and quarterly audit and compliance reporting.
+To utilize my expertise in data analysis and visualization to transform raw data into actionable insights that drive strategic decision-making. I aim to leverage advanced analytical tools and techniques to identify trends, optimize processes, and support the business in achieving its goals through data-driven recommendations
 
 ## Employment History
 
@@ -55,18 +54,20 @@ Experienced and dedicated Data Analyst with several years of experience identify
 
 The main objective of mouseless cursor control using facial movement is to provide an alternative method for computer users who are unable to use a traditional mouse due to physical limitations or disabilities. By using facial movements, users can more easily navigate their computer screens.
 
-### Object Tracking Using Camshift Algorithm
-
-It is an application of deep learning which is used to develop a unique identification for each of the initial detections and then track the detected objects as they move around frames in video.
-
 ### Automatic Text Generation Using LSTM
 
 LSTM-based automatic text generation involves training a neural network to learn patterns in a dataset and generate new text based on those patterns. The objective is to minimize the difference between the generated and actual text using a loss function.
 
+### Data Extracting
+The objective of this data extraction process is to efficiently and accurately retrieve relevant data from specified sources to enable detailed analysis, reporting, and visualization. This process aims to ensure that the data collected is comprehensive, high-quality, and aligns with the requirements of the project.
+
+### Car Prize Prediction
+To develop a predictive model using linear regression that accurately estimates car prices based on various features such as ,bore,stroke,normalized-losses,horsepower,and brand, with the goal of providing reliable price assessments to assist buyers and sellers in making informed decisions.
+
 ## Details
 
 - **Email:** [preethiganta007@gmail.com](mailto:preethiganta007@gmail.com)
-- **Contact:** +1 (302) 409-5927
+- **Contact:** +1 (407)-713-5688
 - **LinkedIn:** [https://www.linkedin.com/in/preethi-g-4b414b28b](https://www.linkedin.com/in/preethi-g-4b414b28b)
 
 ## Skills
@@ -77,7 +78,7 @@ LSTM-based automatic text generation involves training a neural network to learn
 - DBMS
 - AWS
 - Leadership Skills
-- Data Clean-ups
+- Data Cleaning
 - PowerBI
 - Microsoft Office
 - Agile Methodologies

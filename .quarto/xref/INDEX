@@ -30,5 +30,26 @@
   },
   "posts/wine data/wine.qmd": {
     "wine.html": "43061d67"
+  },
+  "posts/Car Price Prediction/Prediction.qmd": {
+    "Prediction.html": "4c8196cf"
+  },
+  "QuartoBlog/posts/wine data/wine.qmd": {
+    "wine.html": "f5be98c4"
+  },
+  "QuartoBlog/posts/Iris Data/Report.qmd": {
+    "Report.html": "dddd8c1f"
+  },
+  "QuartoBlog/posts/welcome/index.qmd": {
+    "index.html": "fc00a214"
+  },
+  "QuartoBlog/posts/cv/Cv.qmd": {
+    "Cv.html": "8b450629"
+  },
+  "QuartoBlog/index.qmd": {
+    "index.html": "29be0c45"
+  },
+  "QuartoBlog/about.qmd": {
+    "about.html": "5de68294"
   }
 }

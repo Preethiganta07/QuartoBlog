@@ -1,48 +1,54 @@
 ---
-title : "Report On Wine Data"
-image: image.png
+title: "Report on Wine Data"
 author: "Preethi Ganta"
-date: "07-26-2024"
-format : 
-    html :
-         code-fold : true
-jupyter : python3
----
-# Report on Wine DataSet
-![**Wine**](image.png){width="500" fig-align="right"}<br>
+date: "2024-07-16"
+categories: [code, analysis]
+format:       
+   html:
+      code-fold: true
+jupyter: python3
+image: "image.png"
 
-## Wine Dataset
-Here the dataset shows the type of class and the quality of wine<br>
-**class :-**<br>1,2,3 It represent the Wine Quality
-**Types of Alcohol:-**<br>**Alcohol:** Alcohol content.<br>
-**Malicacid**: Malic acid content.<br>
-**ash:** Ash content.<br>
-**Alcalinity_ofash:** Alcalinity of ash.<br>
-**Magnesium:** Magnesium content.<br>
-**Totalphenols:** Total phenol content.<br>
-**Flavanoids:** Flavanoid content.<br>
-**Nonflavanoidphenols:** Non-flavanoid phenol content.<br>
-**Proanthocyanins:** Proanthocyanin content.<br>
-**Colorintensity:** Color intensity.<br>
-**Hue:** Hue.<br>
-**OD280_0D315_of_diluted_wines:** OD280/OD315 of diluted wines.<br>
-**Proline:** Proline content.<br>
+---
+# Image of Wine 
+![**Wine**](image.png){width="500"}
+
+## About Wine data
+The Wine data consists of measurements of various chemical properties of different types of wine. It is organized in a tabular format with multiple columns, each representing a specific property, and rows representing different wine samples. 
+
+## Data Structure
+**Columns in wine data:**
+
+**class:** Class label (1, 2, or 3) representing different types of wine.<br>
+Alcohol<br>
+Malicacid<br>
+Ash<br>
+Alcalinity_of_ash<br>
+Magnesium<br>
+Total_phenols<br>
+Flavanoids<br>
+Nonflavanoid_phenols<br>
+Proanthocyanins<br>
+Color_intensity<br>
+Hue<br>
+0D280_0D315_of_diluted_wines<br>
+Proline<br>
+
+## Descriptive Statistics
+Descriptive Statistics for wine data set
+
 
 ```{python}
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 import nbformat
 
-# Read the .dat file
-data = pd.read_csv('wine.data', delimiter=',')
+
+data = pd.read_csv('wine.data', delimiter=',', engine='python' )
 data.to_excel('wine.xlsx', index=False)
-print(data)
 columns = data.columns[data.columns != 'class']    
 grpdata = data.groupby(["class"])
-```
-# Descriptive Statistics
-```{python}
+
 def statistics(data):
         #numeric_columns = data.select_dtypes(include=['number']).columns
         #print(numeric_columns)
@@ -71,4 +77,143 @@ def statistics(data):
         return mean_value, median_value, mode_value
 
 mean_value, median_value, mode_value = statistics(data)
+
+```
+
+
+## Histogram Plot
+Histogram plot for wine data set
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import nbformat
+
+data = pd.read_csv('wine.data', delimiter=',', engine='python' )
+data.to_excel('wine.xlsx', index=False)
+columns = data.columns[data.columns != 'class']    
+grpdata = data.groupby(["class"])
+#numeric_columns = data.select_dtypes(include=['number'])
+#print(numeric_columns)
+
+
+def histogram_plot(data):
+        # Plot histogram for each numeric column
+            for column in columns:
+                for name, group in grpdata:
+                    plt.figure(figsize=(6,4))
+                    class_name = name if isinstance(name, str) else name[0]
+                    print("class" , class_name)
+                    plt.hist(group[column], bins=80, alpha=0.7, label=column)
+                    plt.xlabel(column)
+                    plt.ylabel('Frequency')
+                    plt.title(f'Histogram of {column}')
+                    plt.show()
+
+# Call the function with the data
+histogram_plot(data)
+```
+
+## Scatter Plot
+Scatter plot for iris data set
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import nbformat
+
+
+data = pd.read_csv('wine.data', delimiter=',', engine='python' )
+data.to_excel('wine.xlsx', index=False)
+columns = data.columns[data.columns != 'class']    
+grpdata = data.groupby(["class"])
+    #print(data)
+
+def scatter_plot(data):
+    colors = ['r', 'g', 'b']  # Define more colors if there are more than 2 classes
+
+    for column1 in columns:
+        for column2 in columns:
+            if column1 != column2:
+                plt.figure(figsize=(7,7))  # Create a larger figure for better visualization
+                for name, group in grpdata:
+                    color_map = colors[:len(grpdata)]
+                    plt.scatter(group[column1], group[column2], label=f' "class"{name}')
+                plt.title(f"Scatter Plot of {column1} and {column2}")
+                plt.xlabel(column1)
+                plt.ylabel(column2)
+                plt.legend()
+                plt.grid(True)
+                plt.show()
+
+
+scatter_plot(data)
+
+```
+
+## Line Plot
+Line plot for wine data set
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import nbformat
+
+
+data = pd.read_csv('wine.data', delimiter=',', engine='python' )
+data.to_excel('wine.xlsx', index=False)
+columns = data.columns[data.columns != 'class']    
+grpdata = data.groupby(["class"])
+    #print(data)
+
+def line_plot(data):
+    # Select only numeric columns
+    #numeric_columns = data.select_dtypes(include=['number']).columns
+    # Plot histogram for each numeric column
+    for name, group in grpdata:
+        class_name = name if isinstance(name, str) else name[0]
+        print("class", class_name)
+        for column in columns:
+                plt.figure(figsize=(6, 4))
+                plt.plot(group.index, group[column], color='green' , label=column, linestyle='-', marker='o')
+                plt.title('Line Plot')
+                plt.xlabel('Index')
+                plt.ylabel(column)
+                plt.legend()
+                plt.grid(True)
+                plt.show()
+
+line_plot(data)
+
+```
+
+## Box Plot
+Box plot for iris data set
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import nbformat
+
+
+data = pd.read_csv('wine.data', delimiter=',', engine='python' )
+data.to_excel('wine.xlsx', index=False)
+columns = data.columns[data.columns != 'class']    
+grpdata = data.groupby(["class"])
+    #print(data)
+
+def box_plot(data):
+    for name, group in grpdata:
+        class_name = name if isinstance(name, str) else name[0]
+        print("class" , class_name)
+        for column in columns:
+            plt.figure(figsize=(6, 4))
+            plt.boxplot(group[column])   #, tick_labels=numeric_columns
+            plt.title('Box Plot')
+            plt.xlabel(column)
+            plt.ylabel('Values')
+            plt.grid()
+            plt.show()
+
+box_plot(data)
 ```

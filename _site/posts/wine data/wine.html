@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Preethi Ganta">
-<meta name="dcterms.date" content="2024-07-26">
+<meta name="dcterms.date" content="2024-07-16">
 
-<title>Report On Wine Data – blog</title>
+<title>Report on Wine Data – Preethi Ganta</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">blog</span>
+    <span class="navbar-title">Preethi Ganta</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -126,10 +126,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About</span></a>
+<span class="menu-text">Preethi Ganta</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/preethi-g-4b414b28b"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Preethiganta07"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -149,8 +154,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Report On Wine Data</h1>
-                      </div>
+      <h1 class="title">Report on Wine Data</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">code</div>
+                <div class="quarto-category">analysis</div>
+              </div>
+                  </div>
   </div>
     
   
@@ -166,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 26, 2024</p>
+        <p class="date">July 16, 2024</p>
       </div>
     </div>
     
@@ -185,105 +194,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="report-on-wine-dataset" class="level1">
-<h1>Report on Wine DataSet</h1>
-<p><img src="image.png" class="img-fluid quarto-figure quarto-figure-right" width="500" alt="Wine"><br></p>
-<section id="wine-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="wine-dataset">Wine Dataset</h2>
-<p>Here the dataset shows the type of class and the quality of wine <strong>class :-</strong><br>1,2,3 It represent the Wine Quality <strong>Types of Alcohol:-</strong><br><strong>Alcohol:</strong> Alcohol content.<br> <strong>Malicacid</strong>: Malic acid content.<br> <strong>ash:</strong> Ash content.<br> <strong>Alcalinity_ofash:</strong> Alcalinity of ash.<br> <strong>Magnesium:</strong> Magnesium content.<br> <strong>Totalphenols:</strong> Total phenol content.<br> <strong>Flavanoids:</strong> Flavanoid content.<br> <strong>Nonflavanoidphenols:</strong> Non-flavanoid phenol content.<br> <strong>Proanthocyanins:</strong> Proanthocyanin content.<br> <strong>Colorintensity:</strong> Color intensity.<br> <strong>Hue:</strong> Hue.<br> <strong>OD280_0D315_of_diluted_wines:</strong> OD280/OD315 of diluted wines.<br> <strong>Proline:</strong> Proline content.<br></p>
-<div id="c6d14de5" class="cell" data-execution_count="1">
+<section id="image-of-wine" class="level1">
+<h1>Image of Wine</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image.png" class="img-fluid figure-img" width="500"></p>
+<figcaption><strong>Wine</strong></figcaption>
+</figure>
+</div>
+<section id="about-wine-data" class="level2">
+<h2 class="anchored" data-anchor-id="about-wine-data">About Wine data</h2>
+<p>The Wine data consists of measurements of various chemical properties of different types of wine. It is organized in a tabular format with multiple columns, each representing a specific property, and rows representing different wine samples.</p>
+</section>
+<section id="data-structure" class="level2">
+<h2 class="anchored" data-anchor-id="data-structure">Data Structure</h2>
+<p><strong>Columns in wine data:</strong></p>
+<p><strong>class:</strong> Class label (1, 2, or 3) representing different types of wine.<br> Alcohol<br> Malicacid<br> Ash<br> Alcalinity_of_ash<br> Magnesium<br> Total_phenols<br> Flavanoids<br> Nonflavanoid_phenols<br> Proanthocyanins<br> Color_intensity<br> Hue<br> 0D280_0D315_of_diluted_wines<br> Proline<br></p>
+</section>
+<section id="descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-statistics">Descriptive Statistics</h2>
+<p>Descriptive Statistics for wine data set</p>
+<div id="a12fe020" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbformat</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbformat</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the .dat file</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'wine.data'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>data.to_excel(<span class="st">'wine.xlsx'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> data.columns[data.columns <span class="op">!=</span> <span class="st">'class'</span>]    </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>grpdata <span class="op">=</span> data.groupby([<span class="st">"class"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>     class  Alcohol  Malicacid   ash  Alcalinity_ofash  Magnesium  \
-0        1    14.23       1.71  2.43              15.6        127   
-1        1    13.20       1.78  2.14              11.2        100   
-2        1    13.16       2.36  2.67              18.6        101   
-3        1    14.37       1.95  2.50              16.8        113   
-4        1    13.24       2.59  2.87              21.0        118   
-..     ...      ...        ...   ...               ...        ...   
-173      3    13.71       5.65  2.45              20.5         95   
-174      3    13.40       3.91  2.48              23.0        102   
-175      3    13.27       4.28  2.26              20.0        120   
-176      3    13.17       2.59  2.37              20.0        120   
-177      3    14.13       4.10  2.74              24.5         96   
-
-     Totalphenols  Flavanoids  Nonflavanoidphenols  Proanthocyanins  \
-0            2.80        3.06                 0.28             2.29   
-1            2.65        2.76                 0.26             1.28   
-2            2.80        3.24                 0.30             2.81   
-3            3.85        3.49                 0.24             2.18   
-4            2.80        2.69                 0.39             1.82   
-..            ...         ...                  ...              ...   
-173          1.68        0.61                 0.52             1.06   
-174          1.80        0.75                 0.43             1.41   
-175          1.59        0.69                 0.43             1.35   
-176          1.65        0.68                 0.53             1.46   
-177          2.05        0.76                 0.56             1.35   
-
-     Colorintensity   Hue  0D280_0D315_of_diluted_wines  Proline  
-0              5.64  1.04                          3.92     1065  
-1              4.38  1.05                          3.40     1050  
-2              5.68  1.03                          3.17     1185  
-3              7.80  0.86                          3.45     1480  
-4              4.32  1.04                          2.93      735  
-..              ...   ...                           ...      ...  
-173            7.70  0.64                          1.74      740  
-174            7.30  0.70                          1.56      750  
-175           10.20  0.59                          1.56      835  
-176            9.30  0.60                          1.62      840  
-177            9.20  0.61                          1.60      560  
-
-[178 rows x 14 columns]</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="descriptive-statistics" class="level1">
-<h1>Descriptive Statistics</h1>
-<div id="96798f6e" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> statistics(data):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="co">#numeric_columns = data.select_dtypes(include=['number']).columns</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">#print(numeric_columns)</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        mean_value <span class="op">=</span> grpdata.mean(numeric_only<span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        median_value <span class="op">=</span> grpdata.median(numeric_only<span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        mode_value <span class="op">=</span> grpdata.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.mode().iloc[<span class="dv">0</span>] <span class="cf">if</span> <span class="kw">not</span> x.mode().empty <span class="cf">else</span> <span class="va">None</span>, include_groups<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">#mode_value = grpdata.mode().iloc[0]         </span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Using f-strings to format the output</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Mean value for each column: </span><span class="ch">\n</span><span class="sc">{</span>mean_value<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"=========================================================="</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Median value for each column: </span><span class="ch">\n</span><span class="sc">{</span>median_value<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'==========================================================='</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Mode value for each column: </span><span class="ch">\n</span><span class="sc">{</span>mode_value<span class="sc">}</span><span class="ss">"</span>)     </span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> column <span class="kw">in</span> columns:</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>            total_sum <span class="op">=</span> grpdata[column].<span class="bu">sum</span>()     </span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            std_value <span class="op">=</span> grpdata[column].std()     </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>            count_value <span class="op">=</span> grpdata[column].count()</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>            max_value <span class="op">=</span> grpdata[column].<span class="bu">max</span>()</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            min_value <span class="op">=</span> grpdata[column].<span class="bu">min</span>()</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"========================================================="</span>)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Total sum of '</span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">': </span><span class="sc">{</span>total_sum<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Standard Deviation of '</span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">': </span><span class="sc">{</span>std_value<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Count value of '</span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">': </span><span class="sc">{</span>count_value<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Max Value of '</span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">': </span><span class="sc">{</span>max_value<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Min Value of '</span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">': </span><span class="sc">{</span>min_value<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> mean_value, median_value, mode_value</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>mean_value, median_value, mode_value <span class="op">=</span> statistics(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'wine.data'</span>, delimiter<span class="op">=</span><span class="st">','</span>, engine<span class="op">=</span><span class="st">'python'</span> )</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>data.to_excel(<span class="st">'wine.xlsx'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> data.columns[data.columns <span class="op">!=</span> <span class="st">'class'</span>]    </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>grpdata <span class="op">=</span> data.groupby([<span class="st">"class"</span>])</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> statistics(data):</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">#numeric_columns = data.select_dtypes(include=['number']).columns</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">#print(numeric_columns)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        mean_value <span class="op">=</span> grpdata.mean(numeric_only<span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        median_value <span class="op">=</span> grpdata.median(numeric_only<span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        mode_value <span class="op">=</span> grpdata.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.mode().iloc[<span class="dv">0</span>] <span class="cf">if</span> <span class="kw">not</span> x.mode().empty <span class="cf">else</span> <span class="va">None</span>, include_groups<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">#mode_value = grpdata.mode().iloc[0]         </span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Using f-strings to format the output</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Mean value for each column: </span><span class="ch">\n</span><span class="sc">{</span>mean_value<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"=========================================================="</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Median value for each column: </span><span class="ch">\n</span><span class="sc">{</span>median_value<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'==========================================================='</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Mode value for each column: </span><span class="ch">\n</span><span class="sc">{</span>mode_value<span class="sc">}</span><span class="ss">"</span>)     </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> column <span class="kw">in</span> columns:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            total_sum <span class="op">=</span> grpdata[column].<span class="bu">sum</span>()     </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            std_value <span class="op">=</span> grpdata[column].std()     </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            count_value <span class="op">=</span> grpdata[column].count()</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            max_value <span class="op">=</span> grpdata[column].<span class="bu">max</span>()</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>            min_value <span class="op">=</span> grpdata[column].<span class="bu">min</span>()</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"========================================================="</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Total sum of '</span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">': </span><span class="sc">{</span>total_sum<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Standard Deviation of '</span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">': </span><span class="sc">{</span>std_value<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Count value of '</span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">': </span><span class="sc">{</span>count_value<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Max Value of '</span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">': </span><span class="sc">{</span>max_value<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Min Value of '</span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">': </span><span class="sc">{</span>min_value<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> mean_value, median_value, mode_value</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>mean_value, median_value, mode_value <span class="op">=</span> statistics(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean value for each column: 
@@ -682,8 +653,2202 @@ Min Value of 'Proline': class
 Name: Proline, dtype: int64</code></pre>
 </div>
 </div>
+</section>
+<section id="histogram-plot" class="level2">
+<h2 class="anchored" data-anchor-id="histogram-plot">Histogram Plot</h2>
+<p>Histogram plot for wine data set</p>
+<div id="094cb274" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbformat</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'wine.data'</span>, delimiter<span class="op">=</span><span class="st">','</span>, engine<span class="op">=</span><span class="st">'python'</span> )</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data.to_excel(<span class="st">'wine.xlsx'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> data.columns[data.columns <span class="op">!=</span> <span class="st">'class'</span>]    </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>grpdata <span class="op">=</span> data.groupby([<span class="st">"class"</span>])</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#numeric_columns = data.select_dtypes(include=['number'])</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#print(numeric_columns)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> histogram_plot(data):</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot histogram for each numeric column</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> column <span class="kw">in</span> columns:</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> name, group <span class="kw">in</span> grpdata:</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                    plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>                    class_name <span class="op">=</span> name <span class="cf">if</span> <span class="bu">isinstance</span>(name, <span class="bu">str</span>) <span class="cf">else</span> name[<span class="dv">0</span>]</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="st">"class"</span> , class_name)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                    plt.hist(group[column], bins<span class="op">=</span><span class="dv">80</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span>column)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>                    plt.xlabel(column)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>                    plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>                    plt.title(<span class="ss">f'Histogram of </span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>                    plt.show()</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function with the data</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>histogram_plot(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-2.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-4.png" width="516" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-6.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-8.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-10.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-12.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-14.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-16.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-18.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-20.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-22.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-24.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-26.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-28.png" width="510" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-30.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-32.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-34.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-36.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-38.png" width="513" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-40.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-42.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-44.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-46.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-48.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-50.png" width="519" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-52.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-54.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-56.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-58.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-60.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-62.png" width="510" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-64.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-66.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-68.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-70.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-72.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-74.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-76.png" width="507" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-3-output-78.png" width="524" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="scatter-plot" class="level2">
+<h2 class="anchored" data-anchor-id="scatter-plot">Scatter Plot</h2>
+<p>Scatter plot for iris data set</p>
+<div id="10552e67" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbformat</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'wine.data'</span>, delimiter<span class="op">=</span><span class="st">','</span>, engine<span class="op">=</span><span class="st">'python'</span> )</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>data.to_excel(<span class="st">'wine.xlsx'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> data.columns[data.columns <span class="op">!=</span> <span class="st">'class'</span>]    </span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>grpdata <span class="op">=</span> data.groupby([<span class="st">"class"</span>])</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#print(data)</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> scatter_plot(data):</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>    colors <span class="op">=</span> [<span class="st">'r'</span>, <span class="st">'g'</span>, <span class="st">'b'</span>]  <span class="co"># Define more colors if there are more than 2 classes</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> column1 <span class="kw">in</span> columns:</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> column2 <span class="kw">in</span> columns:</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> column1 <span class="op">!=</span> column2:</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>                plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">7</span>))  <span class="co"># Create a larger figure for better visualization</span></span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> name, group <span class="kw">in</span> grpdata:</span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>                    color_map <span class="op">=</span> colors[:<span class="bu">len</span>(grpdata)]</span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>                    plt.scatter(group[column1], group[column2], label<span class="op">=</span><span class="ss">f' "class"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>                plt.title(<span class="ss">f"Scatter Plot of </span><span class="sc">{</span>column1<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>column2<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>                plt.xlabel(column1)</span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>                plt.ylabel(column2)</span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>                plt.legend()</span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>                plt.grid(<span class="va">True</span>)</span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>                plt.show()</span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>scatter_plot(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-1.png" width="588" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-2.png" width="610" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-3.png" width="610" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-4.png" width="605" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-5.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-6.png" width="588" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-7.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-8.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-9.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-10.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-11.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-12.png" width="614" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-13.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-14.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-15.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-16.png" width="593" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-17.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-18.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-19.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-20.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-21.png" width="585" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-22.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-23.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-24.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-25.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-26.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-27.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-28.png" width="593" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-29.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-30.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-31.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-32.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-33.png" width="585" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-34.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-35.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-36.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-37.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-38.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-39.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-40.png" width="593" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-41.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-42.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-43.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-44.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-45.png" width="585" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-46.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-47.png" width="598" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-48.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-49.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-50.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-51.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-52.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-53.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-54.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-55.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-56.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-57.png" width="585" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-58.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-59.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-60.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-61.png" width="604" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-62.png" width="583" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-63.png" width="604" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-64.png" width="604" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-65.png" width="600" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-66.png" width="583" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-67.png" width="595" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-68.png" width="595" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-69.png" width="591" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-70.png" width="595" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-71.png" width="595" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-72.png" width="608" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-73.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-74.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-75.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-76.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-77.png" width="593" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-78.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-79.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-80.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-81.png" width="585" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-82.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-83.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-84.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-85.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-86.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-87.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-88.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-89.png" width="593" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-90.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-91.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-92.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-93.png" width="585" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-94.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-95.png" width="619" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-96.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-97.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-98.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-99.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-100.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-101.png" width="593" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-102.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-103.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-104.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-105.png" width="585" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-106.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-107.png" width="602" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-108.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-109.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-110.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-111.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-112.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-113.png" width="593" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-114.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-115.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-116.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-117.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-118.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-119.png" width="591" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-120.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-121.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-122.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-123.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-124.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-125.png" width="593" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-126.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-127.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-128.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-129.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-130.png" width="585" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-131.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-132.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-133.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-134.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-135.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-136.png" width="606" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-137.png" width="593" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-138.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-139.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-140.png" width="619" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-141.png" width="602" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-142.png" width="587" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-143.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-144.png" width="601" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-145.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-146.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-147.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-148.png" width="597" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-149.png" width="593" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-150.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-151.png" width="576" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-152.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-153.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-154.png" width="585" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-155.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-4-output-156.png" width="589" height="597" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="line-plot" class="level2">
+<h2 class="anchored" data-anchor-id="line-plot">Line Plot</h2>
+<p>Line plot for wine data set</p>
+<div id="f8033b6c" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbformat</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'wine.data'</span>, delimiter<span class="op">=</span><span class="st">','</span>, engine<span class="op">=</span><span class="st">'python'</span> )</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>data.to_excel(<span class="st">'wine.xlsx'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> data.columns[data.columns <span class="op">!=</span> <span class="st">'class'</span>]    </span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>grpdata <span class="op">=</span> data.groupby([<span class="st">"class"</span>])</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#print(data)</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> line_plot(data):</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Select only numeric columns</span></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">#numeric_columns = data.select_dtypes(include=['number']).columns</span></span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot histogram for each numeric column</span></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name, group <span class="kw">in</span> grpdata:</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>        class_name <span class="op">=</span> name <span class="cf">if</span> <span class="bu">isinstance</span>(name, <span class="bu">str</span>) <span class="cf">else</span> name[<span class="dv">0</span>]</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"class"</span>, class_name)</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> column <span class="kw">in</span> columns:</span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>                plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>                plt.plot(group.index, group[column], color<span class="op">=</span><span class="st">'green'</span> , label<span class="op">=</span>column, linestyle<span class="op">=</span><span class="st">'-'</span>, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>                plt.title(<span class="st">'Line Plot'</span>)</span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>                plt.xlabel(<span class="st">'Index'</span>)</span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>                plt.ylabel(column)</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>                plt.legend()</span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>                plt.grid(<span class="va">True</span>)</span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>                plt.show()</span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>line_plot(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-2.png" width="534" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-3.png" width="517" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-4.png" width="517" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-5.png" width="512" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-6.png" width="521" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-7.png" width="525" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-8.png" width="525" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-9.png" width="525" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-10.png" width="525" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-11.png" width="504" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-12.png" width="517" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-13.png" width="517" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-14.png" width="529" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-16.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-17.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-18.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-19.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-20.png" width="519" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-21.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-22.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-23.png" width="514" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-24.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-25.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-26.png" width="514" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-27.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-28.png" width="527" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-30.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-31.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-32.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-33.png" width="510" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-34.png" width="519" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-35.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-36.png" width="514" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-37.png" width="514" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-38.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-39.png" width="510" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-40.png" width="514" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-41.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-5-output-42.png" width="519" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="box-plot" class="level2">
+<h2 class="anchored" data-anchor-id="box-plot">Box Plot</h2>
+<p>Box plot for iris data set</p>
+<div id="25162022" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbformat</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'wine.data'</span>, delimiter<span class="op">=</span><span class="st">','</span>, engine<span class="op">=</span><span class="st">'python'</span> )</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>data.to_excel(<span class="st">'wine.xlsx'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> data.columns[data.columns <span class="op">!=</span> <span class="st">'class'</span>]    </span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>grpdata <span class="op">=</span> data.groupby([<span class="st">"class"</span>])</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#print(data)</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> box_plot(data):</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name, group <span class="kw">in</span> grpdata:</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>        class_name <span class="op">=</span> name <span class="cf">if</span> <span class="bu">isinstance</span>(name, <span class="bu">str</span>) <span class="cf">else</span> name[<span class="dv">0</span>]</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"class"</span> , class_name)</span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> column <span class="kw">in</span> columns:</span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>            plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>            plt.boxplot(group[column])   <span class="co">#, tick_labels=numeric_columns</span></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>            plt.title(<span class="st">'Box Plot'</span>)</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>            plt.xlabel(column)</span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>            plt.ylabel(<span class="st">'Values'</span>)</span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>            plt.grid()</span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>            plt.show()</span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>box_plot(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-2.png" width="531" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-3.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-4.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-5.png" width="510" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-6.png" width="519" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-7.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-8.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-9.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-10.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-11.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-12.png" width="514" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-13.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-14.png" width="527" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-16.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-17.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-18.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-19.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-20.png" width="519" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-21.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-22.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-23.png" width="514" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-24.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-25.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-26.png" width="514" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-27.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-28.png" width="527" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class 3</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-30.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-31.png" width="502" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-32.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-33.png" width="510" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-34.png" width="519" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-35.png" width="523" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-36.png" width="514" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-37.png" width="514" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-38.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-39.png" width="510" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-40.png" width="514" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-41.png" width="515" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wine_files/figure-html/cell-6-output-42.png" width="519" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -1,0 +1,198 @@
+---
+title : " Linear Regression - Car Price Prediction And Data Analysis"
+image: car.png
+author: "Preethi Ganta"
+date: "07-29-2024"
+categories: ['code','Analysis']
+format : 
+    html :
+         code-fold : true
+jupyter : python3
+---
+## Problem Statement
+Let's consider a dataset for used cars. As a Data Scientist, you are given the task of creating an automated system that predicts the selling price of cars based on various features, such as horsepower, peak RPM, curb weight, etc.<br>
+
+By using this features we can estimate the price for the car
+Here we can see the dataFrame containing accurate historical data, which includes features . Our task is to use this data that can predict the prices of any cars
+
+## Import Libraries
+```{python}
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score ,mean_absolute_error
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+![Libraries](image.png)
+Here we can see the data below about the car data 
+```{python}
+df = pd.read_csv('automobile.data', delimiter=',')
+print(df.head())
+```
+## DataCleaning 
+Before using the any dataset we need to clean data.
+<ul>
+    <li>Handling the missing values in the dataset</li>
+    <li>Replacing the '?' with the Empty string</li>
+</ul>
+Convert columns with the data type object (string) to numeric if the column contains numeric values. Otherwise, leave the column as object (string). For example, some columns contain '?'. These columns should be converted to numeric after cleaning the data.
+
+```{python}
+df.replace("?",'', inplace=True)
+print(df)
+feature_columns = ['horsepower','bore','stroke','normalized-losses', 'price', 'peak-rpm']
+# Convert selected columns to numeric (if they aren't already)
+for col in feature_columns:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
+df = df.assign(price=df['price'].fillna(df['price'].mean()))
+df = df.assign(horsepower=df['horsepower'].fillna(df['horsepower'].mean()))
+df = df.assign(bore=df['bore'].fillna(df['bore'].mean()))
+```
+
+## Data Information
+We could see that class, normalized-losses, wheel-base, length, width, height, curb-weight, engine-size, bore,stroke, compression-ratio, horsepower, peak-rpm, city-mpg, highway-mpg,   price are **numeric** whereas  make, fuel-type, aspiration,num-of-doors, body-style, drive-wheels, engine-location, engine-type, num-of-cylinders, fuel-system are **objects**( string) possibly categorical columns.
+
+```{python}
+df.info()
+```
+### let's explore the Statistics for numeric columns
+```{python}
+df.describe()
+```
+
+## Correlation
+
+The relationship between two numerical features such as price and hoursepower etc. can be numerically expressed using a measure called correlation coefficient, which can be computed using the .corr method from the pandas' library.
+
+
+```{python}
+correlation_coefficient_columns = ['normalized-losses','wheel-base','length','width','height','curb-weight','engine-size','bore','stroke','compression-ratio','horsepower','peak-rpm','city-mpg','highway-mpg']
+for col in correlation_coefficient_columns:
+    correlation_coefficient = df['price'].corr(df[col])
+    print(f"Correlation between price and {col}: {correlation_coefficient}")
+```
+
+We could observe from the values above, that there’s a high correlation between **price** and **engine-size** but less correlation between **price** and **highway-mpg**.
+
+We can use the **.corr()** method to show the correlation coefficients between all pairs of numerical columns.
+
+```{python}
+df.corr(method='pearson',numeric_only=True)
+```
+
+## Visualization of above table using a heatmap.
+
+```{python}
+plt.figure(figsize=(12, 8))
+sns.heatmap(df.corr(method='pearson',numeric_only=True), cmap='Reds', annot=True)
+#print(data)
+plt.title('Correlation Matrix')
+```
+
+<br>
+In the correlation matrix, we observe that features like **horsepower, engine-size, curb-weight, and width** have high correlations with the price, close to **+1**, indicating a strong positive linear relationship. On the other hand, **length** is highly correlated with **wheel-base**, suggesting that including both in the model might lead to redundant information.
+
+If **length and wheel-base** provide overlapping information, adding both to the model may not improve its predictive power. Instead, the model might perform better with a combination of features that provide complementary information. For instance, **wheel-base and bore** might together explain different aspects of price variation that length does not capture.
+
+Therefore, the features **horsepower, engine-size, curb-weight, width, wheel-base, and bore** are chosen to build a more effective linear regression model.
+
+## Linear Regression using a Single Feature
+
+```{python}
+df = df.assign(price=df['price'].fillna(df['price'].mean()))
+df = df.assign(horsepower=df['horsepower'].fillna(df['horsepower'].mean()))
+df = df.assign(bore=df['bore'].fillna(df['bore'].mean()))
+
+print(df)
+X = df[['horsepower', 'engine-size','curb-weight', 'width','wheel-base','bore','length']] # Independent variables
+
+y = df['price']           #Dependent variables
+#print(y)
+
+# Split the data into training and validation sets
+X_train, X_val, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+#print(X_train)
+#print(X_val)
+model = LinearRegression()
+model.fit(X_train, y_train)
+# Make predictions on the training set
+X_train_pred = model.predict(X_train)
+
+# Make predictions on the testing set
+X_test_pred = model.predict(X_val)
+
+#print(y_train_pred , y_test_pred)
+
+# Calculate Mean Squared Error
+train_mse = mean_squared_error(y_train, X_train_pred)
+test_mse = mean_squared_error(y_test, X_test_pred)
+
+# Calculate Mean Absolute Error
+train_mae = mean_absolute_error(y_train, X_train_pred)
+test_mae = mean_absolute_error(y_test, X_test_pred)
+
+# Calculate R² Score
+train_r2 = r2_score(y_train, X_train_pred)
+test_r2 = r2_score(y_test, X_test_pred)
+```
+
+## Evaluation
+
+```{python}
+print(f"Training MSE: {train_mse}")
+print(f"Testing MSE: {test_mse}")
+print("===========================================")
+print(f"Training MAE: {train_mae}")
+print(f"Testing MAE: {test_mae}")
+print("=============================================")
+print(f"Training R²: {train_r2}")
+print(f"Testing R²: {test_r2}")
+```
+
+## Ploting
+
+```{python}
+# Plotting
+
+plt.figure(figsize=(8,6))
+# Plot training data and regression line
+plt.scatter(X_train_pred,y_train ,color='blue', edgecolor='w', alpha=0.6, label='Predicted Training Data')
+plt.plot([min(y_train), max(y_train)], [min(y_train), max(y_train)], color='red', linestyle='--', label='Perfect Fit Line')
+
+# Add title and labels
+plt.title('Training Data vs. Predictions')
+plt.xlabel('predicted Price')
+plt.ylabel('Acutal Price')
+plt.legend()
+plt.show()
+
+plt.figure(figsize=(8,6))
+# Plot training data and regression line
+plt.scatter(X_test_pred,y_test,color='blue', edgecolor='w', alpha=0.6, label='Predicted Test Data')
+plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], color='red', linestyle='--', label='Perfect Fit Line')
+# Add title and labels
+plt.title('Test Data vs. Predictions')
+plt.xlabel('Predicted Price')
+plt.ylabel('Acutal Price')
+plt.legend()
+plt.show()
+```
+```{python}
+import statsmodels.api as sm
+import numpy as np
+
+# Generate some sample data
+np.random.seed(0)
+X = df[['horsepower', 'engine-size','curb-weight', 'width','wheel-base','bore','length']] # Independent variables
+
+y = df['price'] 
+# Add a constant to the independent variables (for the intercept)
+X = sm.add_constant(X)
+
+# Fit the model
+model = sm.OLS(y, X).fit()
+
+# Print the summary
+print(model.summary())
+```
