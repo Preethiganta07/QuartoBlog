@@ -204,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="import-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="import-libraries">Import Libraries</h2>
-<div id="3776b02f" class="cell" data-execution_count="1">
+<div id="91d9e9a9" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p><img src="image.png" class="img-fluid" alt="Libraries"> Here we can see the data below about the car data</p>
-<div id="7800a7fc" class="cell" data-execution_count="2">
+<div id="c2134914" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'automobile.data'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span>
@@ -267,7 +267,7 @@ Replacing the ‘?’ with the Empty string
 </li>
 </ul>
 <p>Convert columns with the data type object (string) to numeric if the column contains numeric values. Otherwise, leave the column as object (string). For example, some columns contain ‘?’. These columns should be converted to numeric after cleaning the data.</p>
-<div id="e2695437" class="cell" data-execution_count="3">
+<div id="f9b5083f" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.replace(<span class="st">"?"</span>,<span class="st">''</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
@@ -340,7 +340,7 @@ Replacing the ‘?’ with the Empty string
 <section id="data-information" class="level2">
 <h2 class="anchored" data-anchor-id="data-information">Data Information</h2>
 <p>We could see that class, normalized-losses, wheel-base, length, width, height, curb-weight, engine-size, bore,stroke, compression-ratio, horsepower, peak-rpm, city-mpg, highway-mpg, price are <strong>numeric</strong> whereas make, fuel-type, aspiration,num-of-doors, body-style, drive-wheels, engine-location, engine-type, num-of-cylinders, fuel-system are <strong>objects</strong>( string) possibly categorical columns.</p>
-<div id="65f772f6" class="cell" data-execution_count="4">
+<div id="159e5e01" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -383,12 +383,12 @@ memory usage: 41.8+ KB</code></pre>
 </div>
 <section id="lets-explore-the-statistics-for-numeric-columns" class="level3">
 <h3 class="anchored" data-anchor-id="lets-explore-the-statistics-for-numeric-columns">let’s explore the Statistics for numeric columns</h3>
-<div id="46d71d3c" class="cell" data-execution_count="5">
+<div id="3ebbc55d" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="41">
 <div>
 
 
@@ -578,7 +578,7 @@ memory usage: 41.8+ KB</code></pre>
 <section id="correlation" class="level2">
 <h2 class="anchored" data-anchor-id="correlation">Correlation</h2>
 <p>The relationship between two numerical features such as price and hoursepower etc. can be numerically expressed using a measure called correlation coefficient, which can be computed using the .corr method from the pandas’ library.</p>
-<div id="b45b9074" class="cell" data-execution_count="6">
+<div id="bae5c6ee" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>correlation_coefficient_columns <span class="op">=</span> [<span class="st">'normalized-losses'</span>,<span class="st">'wheel-base'</span>,<span class="st">'length'</span>,<span class="st">'width'</span>,<span class="st">'height'</span>,<span class="st">'curb-weight'</span>,<span class="st">'engine-size'</span>,<span class="st">'bore'</span>,<span class="st">'stroke'</span>,<span class="st">'compression-ratio'</span>,<span class="st">'horsepower'</span>,<span class="st">'peak-rpm'</span>,<span class="st">'city-mpg'</span>,<span class="st">'highway-mpg'</span>]</span>
@@ -605,12 +605,12 @@ Correlation between price and highway-mpg: -0.6905257341183486</code></pre>
 </div>
 <p>We could observe from the values above, that there’s a high correlation between <strong>price</strong> and <strong>engine-size</strong> but less correlation between <strong>price</strong> and <strong>highway-mpg</strong>.</p>
 <p>We can use the <strong>.corr()</strong> method to show the correlation coefficients between all pairs of numerical columns.</p>
-<div id="1b8700e8" class="cell" data-execution_count="7">
+<div id="68df1cf7" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.corr(method<span class="op">=</span><span class="st">'pearson'</span>,numeric_only<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="43">
 <div>
 
 
@@ -950,7 +950,7 @@ Correlation between price and highway-mpg: -0.6905257341183486</code></pre>
 </section>
 <section id="visualization-of-above-table-using-a-heatmap." class="level2">
 <h2 class="anchored" data-anchor-id="visualization-of-above-table-using-a-heatmap.">Visualization of above table using a heatmap.</h2>
-<div id="535649eb" class="cell" data-execution_count="8">
+<div id="dbc1a7b2" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
@@ -958,7 +958,7 @@ Correlation between price and highway-mpg: -0.6905257341183486</code></pre>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#print(data)</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Correlation Matrix'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>Text(0.5, 1.0, 'Correlation Matrix')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -975,7 +975,7 @@ Correlation between price and highway-mpg: -0.6905257341183486</code></pre>
 </section>
 <section id="linear-regression-using-a-single-feature" class="level2">
 <h2 class="anchored" data-anchor-id="linear-regression-using-a-single-feature">Linear Regression using a Single Feature</h2>
-<div id="b5611750" class="cell" data-execution_count="9">
+<div id="df9dd7f2" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.assign(price<span class="op">=</span>df[<span class="st">'price'</span>].fillna(df[<span class="st">'price'</span>].mean()))</span>
@@ -1073,7 +1073,7 @@ Correlation between price and highway-mpg: -0.6905257341183486</code></pre>
 </section>
 <section id="evaluation" class="level2">
 <h2 class="anchored" data-anchor-id="evaluation">Evaluation</h2>
-<div id="f257bcff" class="cell" data-execution_count="10">
+<div id="fc0ec24e" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Training MSE: </span><span class="sc">{</span>train_mse<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -1099,7 +1099,7 @@ Testing R²: 0.8018070302642768</code></pre>
 </section>
 <section id="ploting" class="level2">
 <h2 class="anchored" data-anchor-id="ploting">Ploting</h2>
-<div id="840436ad" class="cell" data-execution_count="11">
+<div id="8c5fea83" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
@@ -1142,7 +1142,7 @@ Testing R²: 0.8018070302642768</code></pre>
 </div>
 </div>
 </div>
-<div id="55329493" class="cell" data-execution_count="12">
+<div id="7476688c" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
@@ -1169,7 +1169,7 @@ Dep. Variable:                  price   R-squared:                       0.779
 Model:                            OLS   Adj. R-squared:                  0.771
 Method:                 Least Squares   F-statistic:                     99.18
 Date:                Wed, 28 Aug 2024   Prob (F-statistic):           4.39e-61
-Time:                        20:15:54   Log-Likelihood:                -1974.6
+Time:                        22:41:51   Log-Likelihood:                -1974.6
 No. Observations:                 205   AIC:                             3965.
 Df Residuals:                     197   BIC:                             3992.
 Df Model:                           7                                         

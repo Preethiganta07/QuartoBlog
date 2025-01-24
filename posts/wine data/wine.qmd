@@ -113,7 +113,7 @@ def histogram_plot(data):
 # Call the function with the data
 histogram_plot(data)
 ```
-
+## Here We can see the Frequency of alcohol
 ## Scatter Plot
 Scatter plot for iris data set
 
@@ -217,3 +217,4 @@ def box_plot(data):
 
 box_plot(data)
 ```
+## Box plot shows the difference 
