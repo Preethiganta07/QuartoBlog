@@ -27,35 +27,43 @@ format:
         \setlength{\columnsep}{3em}
 
 ---
+## Experience
+**Efftronics System Private Limited**              March 2021 - April 2023
 
-## Profile
-
-To utilize my expertise in data analysis and visualization to transform raw data into actionable insights that drive strategic decision-making. I aim to leverage advanced analytical tools and techniques to identify trends, optimize processes, and support the business in achieving its goals through data-driven recommendations
-
-## Employment History
-
-- Completed internship on Python for Data Science in 1Stop.ai.
-- Completed internship on Cyber Security in 1Stop.ai.
+Data Scientist to analyze large datasets, build predictive models, and drive data-driven decision-making. We will collaborate with cross-functional teams to develop insights and solutions using machine learning, statistics, and data visualization techniques. Proficiency in Python, R, SQL, and data manipulation tools is required.
 
 ## Education
 
-**Master of Information Assurance and Systems, Wilmington University, Wilmington**
+**Wilmington University, Wilmington,Delaware**              December 2024
 
 - Graduated in the top 5% of my class.
-- GPA: 3.95 (Till Now)
+- GPA: 3.86
 
-**Bachelor of Computer Sciences, Bapatla Women's Engineering College, Bapatla**
+**Bapatla Women's Engineering College, Bapatla**             March 2023
 
-- GPA: 3.91
+- B.Tech in Computer Science
+- GPA: 8.96
+
+## Details
+- **Email:** [preethiganta007@gmail.com](mailto:preethiganta007@gmail.com)
+- **Contact:** +1 (407)-713-5688
+- **MyBlog** [https://preethiganta-blog.netlify.app/](https://preethiganta-blog.netlify.app/)
+- **LinkedIn:** [https://www.linkedin.com/in/preethi-g-4b414b28b/](https://www.linkedin.com/in/preethi-g-4b414b28b/)
+
+## Skills
+- **Programming Languages**: C ,Python(Pandas, Numpy , Scikit-learn, TensorFlow) ,R Programming 
+- **Data Analysis & Visualisation**: Data Cleaning , Statistical Analysis , Power BI
+- **Machine Learning & AI**: Supervised and Unsupervised 
+- **Database**: My SQL , PostgresSQL
+- **Tools and Technologies**: Jupyter Notebook , Git , Visual Studio
 
 ## Projects
-
-### MouseLess Cursor using Facial Movements
-
-The main objective of mouseless cursor control using facial movement is to provide an alternative method for computer users who are unable to use a traditional mouse due to physical limitations or disabilities. By using facial movements, users can more easily navigate their computer screens.
+### Health Ai Assistance : 	                    
+The project focuses on handling audio data to create a comprehensive healthcare assistant. It incorporates AI-driven methods to process call recordings related to respiratory, musculoskeletal, cardiac, dermatological, and gastrointestinal diseases. The resulting application serves two 
+Patient Insight : Summaries patient-practitioner conversation into actionable insight.
+Symptom Checker: A chatbot that suggests possible diseases and remedies based on real-time data.
 
 ### Automatic Text Generation Using LSTM
-
 LSTM-based automatic text generation involves training a neural network to learn patterns in a dataset and generate new text based on those patterns. The objective is to minimize the difference between the generated and actual text using a loss function.
 
 ### Data Extracting
@@ -64,28 +72,5 @@ The objective of this data extraction process is to efficiently and accurately r
 ### Car Prize Prediction
 To develop a predictive model using linear regression that accurately estimates car prices based on various features such as ,bore,stroke,normalized-losses,horsepower,and brand, with the goal of providing reliable price assessments to assist buyers and sellers in making informed decisions.
 
-## Details
-
-- **Email:** [preethiganta007@gmail.com](mailto:preethiganta007@gmail.com)
-- **Contact:** +1 (407)-713-5688
-- **LinkedIn:** [https://www.linkedin.com/in/preethi-g-4b414b28b](https://www.linkedin.com/in/preethi-g-4b414b28b)
-
-## Skills
-
-- Python Programming
-- C Programming
-- SQL
-- DBMS
-- AWS
-- Leadership Skills
-- Data Cleaning
-- PowerBI
-- Microsoft Office
-- Agile Methodologies
-- Data Analytics
-- Google Sheets
-
-## Languages
-
-- English
-- Telugu
+### MouseLess Cursor using Facial Movements
+The main objective of mouse-less cursor control using facial movement is to provide an alternative method for computer users who are unable to use a traditional mouse due to physical limitations or disabilities. By using facial movements, users can more easily navigate their computer screens.
