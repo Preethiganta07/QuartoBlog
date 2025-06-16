@@ -51,5 +51,17 @@
   },
   "QuartoBlog/about.qmd": {
     "about.html": "5de68294"
+  },
+  "new_env/lib/python3.11/site-packages/idna-3.10.dist-info/LICENSE.md": {
+    "LICENSE.html": "74873503"
+  },
+  "new_env/lib/python3.11/site-packages/numpy/random/LICENSE.md": {
+    "LICENSE.html": "f7709398"
+  },
+  "new_env/lib/python3.11/site-packages/httpcore-1.0.7.dist-info/licenses/LICENSE.md": {
+    "LICENSE.html": "6811c868"
+  },
+  "new_env/lib/python3.11/site-packages/httpx-0.28.1.dist-info/licenses/LICENSE.md": {
+    "LICENSE.html": "91bb351b"
   }
 }

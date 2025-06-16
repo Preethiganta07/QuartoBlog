@@ -11,7 +11,7 @@
     "href": "posts/welcome/index.html",
     "title": "Welcome To My Blog",
     "section": "",
-    "text": "About Me"
+    "text": "About Me I’m Preethi Ganta, a data professional with a strong foundation in data science, machine learning, and technology. My academic and professional journey has equipped me with the skills to transform raw data into actionable insights, delivering impactful solutions for complex challenges.\nWith expertise in Python (including libraries like pandas, NumPy, and Scikit-learn), R, and SQL, I’ve tackled diverse projects ranging from predictive modeling to interactive data visualizations. My proficiency in tools like Power BI and platforms such as PostgreSQL allows me to clean, analyze, and present data in a way that’s both meaningful and accessible.\nDuring my time as a Data Scientist at Efftronics System Private Limited, I honed my ability to analyze large datasets, build predictive models, and deliver data-driven insights. Collaborating with cross-functional teams, I applied machine learning techniques to solve real-world problems, making a measurable impact on decision-making processes.\nBeyond my technical expertise, I’m passionate about effective storytelling through data visualization. Whether it’s designing dashboards in Power BI or building user-friendly applications, my goal is to make complex data easy to understand and actionable."
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -198,9 +198,9 @@
   {
     "objectID": "posts/cv/Cv.html",
     "href": "posts/cv/Cv.html",
-    "title": "Ganta Preethi",
+    "title": "Ganta Preethi Resume",
     "section": "",
-    "text": "Experienced and dedicated Data Analyst with several years of experience identifying efficiencies and problem areas within data streams while communicating needs for projects. Adept at receiving and monitoring data from multiple streams, including Access, SQL, and Excel data sources. Ability to synthesize quantitative information and interact effectively with colleagues and clients. Proven track record of generating summary documents for senior management for monthly and quarterly audit and compliance reporting."
+    "text": "Preethi Ganta\n📍 Atlanta, GA\n📧 preethiganta246@gmail.com\n🔗 LinkedIn | Portfolio\nResults-driven Data Analyst with 4 years of experience in analyzing complex datasets to uncover insights, support business decisions, and drive measurable impact. Proficient in Python, SQL, Tableau, Power BI, and cloud platforms (AWS, GCP, Azure)."
   },
   {
     "objectID": "posts/cv/Cv.html#profile",
@@ -516,5 +516,47 @@
     "title": "About",
     "section": "",
     "text": "About Me"
+  },
+  {
+    "objectID": "posts/cv/Cv.html#kroger-usa-data-analyst",
+    "href": "posts/cv/Cv.html#kroger-usa-data-analyst",
+    "title": "Ganta Preethi Resume",
+    "section": "Kroger, USA — Data Analyst",
+    "text": "Kroger, USA — Data Analyst\nSep 2024 – Present\n- Developed scalable data workflows using Python and SQL, accelerating insight delivery. - Created predictive models and dashboards, improving forecasting by 30% and customer retention by 25%. - Built cloud-based pipelines and deployed ML models using AWS and GCP with 99.9% uptime."
+  },
+  {
+    "objectID": "posts/cv/Cv.html#hexaware-technologies-data-analyst",
+    "href": "posts/cv/Cv.html#hexaware-technologies-data-analyst",
+    "title": "Ganta Preethi Resume",
+    "section": "Hexaware Technologies — Data Analyst",
+    "text": "Hexaware Technologies — Data Analyst\nJan 2020 – Jun 2023\n- Led analytics initiatives in Agile environments, reducing turnaround times. - Designed real-time dashboards using Power BI, enhancing data transparency by 40%. - Consolidated cross-platform data into unified views for strategic planning and forecasting."
+  },
+  {
+    "objectID": "new_env/lib/python3.11/site-packages/httpcore-1.0.7.dist-info/licenses/LICENSE.html",
+    "href": "new_env/lib/python3.11/site-packages/httpcore-1.0.7.dist-info/licenses/LICENSE.html",
+    "title": "Preethi Ganta",
+    "section": "",
+    "text": "Copyright © 2020, Encode OSS Ltd. All rights reserved.\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\nRedistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\nRedistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\nNeither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+  },
+  {
+    "objectID": "new_env/lib/python3.11/site-packages/idna-3.10.dist-info/LICENSE.html",
+    "href": "new_env/lib/python3.11/site-packages/idna-3.10.dist-info/LICENSE.html",
+    "title": "Preethi Ganta",
+    "section": "",
+    "text": "BSD 3-Clause License\nCopyright (c) 2013-2024, Kim Davies and contributors. All rights reserved.\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\nRedistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\nRedistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\nNeither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+  },
+  {
+    "objectID": "new_env/lib/python3.11/site-packages/numpy/random/LICENSE.html",
+    "href": "new_env/lib/python3.11/site-packages/numpy/random/LICENSE.html",
+    "title": "NCSA Open Source License",
+    "section": "",
+    "text": "This software is dual-licensed under the The University of Illinois/NCSA Open Source License (NCSA) and The 3-Clause BSD License\n\nNCSA Open Source License\nCopyright (c) 2019 Kevin Sheppard. All rights reserved.\nDeveloped by: Kevin Sheppard (kevin.sheppard@economics.ox.ac.uk, kevin.k.sheppard@gmail.com) http://www.kevinsheppard.com\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal with the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nRedistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimers.\nRedistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimers in the documentation and/or other materials provided with the distribution.\nNeither the names of Kevin Sheppard, nor the names of any contributors may be used to endorse or promote products derived from this Software without specific prior written permission.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE CONTRIBUTORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.\n\n\n3-Clause BSD License\nCopyright (c) 2019 Kevin Sheppard. All rights reserved.\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\nRedistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\nRedistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\nNeither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\n\nComponents\nMany parts of this module have been derived from original sources, often the algorithm’s designer. Component licenses are located with the component code."
+  },
+  {
+    "objectID": "new_env/lib/python3.11/site-packages/httpx-0.28.1.dist-info/licenses/LICENSE.html",
+    "href": "new_env/lib/python3.11/site-packages/httpx-0.28.1.dist-info/licenses/LICENSE.html",
+    "title": "Preethi Ganta",
+    "section": "",
+    "text": "Copyright © 2019, Encode OSS Ltd. All rights reserved.\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\nRedistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\nRedistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\nNeither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
   }
 ]

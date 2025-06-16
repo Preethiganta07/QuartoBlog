@@ -2,7 +2,8 @@
 title: "Ganta Preethi Resume"
 image: "preethi.png"
 author: "Ganta Preethi"
-tags: ["Data Scientist", "Resume"]
+
+tags: ["Data Analyst", "Resume"]
 format: 
   pdf: 
     documentclass: article
@@ -27,50 +28,61 @@ format:
         \setlength{\columnsep}{3em}
 
 ---
-## Experience
-**Efftronics System Private Limited**              March 2021 - April 2023
 
-Data Scientist to analyze large datasets, build predictive models, and drive data-driven decision-making. We will collaborate with cross-functional teams to develop insights and solutions using machine learning, statistics, and data visualization techniques. Proficiency in Python, R, SQL, and data manipulation tools is required.
+# 👩‍💻 About Me
 
-## Education
+**Preethi Ganta**  
+📍 Atlanta, GA  
+📧 [preethiganta246@gmail.com](mailto:preethiganta246@gmail.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/preethi-g-4b414b28b) | [Portfolio](https://preethiganta-blog.netlify.app/)
 
-**Wilmington University, Wilmington,Delaware**              December 2024
+Results-driven Data Analyst with 4 years of experience in analyzing complex datasets to uncover insights, support business decisions, and drive measurable impact. Proficient in Python, SQL, Tableau, Power BI, and cloud platforms (AWS, GCP, Azure).
 
-- Graduated in the top 5% of my class.
-- GPA: 3.86
+---
 
-**Bapatla Women's Engineering College, Bapatla**             March 2023
+# 💼 Experience
 
-- B.Tech in Computer Science
-- GPA: 8.96
+## Kroger, USA — *Data Analyst*  
+*Sep 2024 – Present*  
+- Developed scalable data workflows using Python and SQL, accelerating insight delivery.
+- Created predictive models and dashboards, improving forecasting by 30% and customer retention by 25%.
+- Built cloud-based pipelines and deployed ML models using AWS and GCP with 99.9% uptime.
 
-## Details
-- **Email:** [preethiganta007@gmail.com](mailto:preethiganta007@gmail.com)
-- **Contact:** +1 (407)-713-5688
-- **MyBlog** [https://preethiganta-blog.netlify.app/](https://preethiganta-blog.netlify.app/)
-- **LinkedIn:** [https://www.linkedin.com/in/preethi-g-4b414b28b/](https://www.linkedin.com/in/preethi-g-4b414b28b/)
+## Hexaware Technologies — *Data Analyst*  
+*Jan 2020 – Jun 2023*  
+- Led analytics initiatives in Agile environments, reducing turnaround times.
+- Designed real-time dashboards using Power BI, enhancing data transparency by 40%.
+- Consolidated cross-platform data into unified views for strategic planning and forecasting.
 
-## Skills
-- **Programming Languages**: C ,Python(Pandas, Numpy , Scikit-learn, TensorFlow) ,R Programming 
-- **Data Analysis & Visualisation**: Data Cleaning , Statistical Analysis , Power BI
-- **Machine Learning & AI**: Supervised and Unsupervised 
-- **Database**: My SQL , PostgresSQL
-- **Tools and Technologies**: Jupyter Notebook , Git , Visual Studio
+---
 
-## Projects
-### Health Ai Assistance : 	                    
-The project focuses on handling audio data to create a comprehensive healthcare assistant. It incorporates AI-driven methods to process call recordings related to respiratory, musculoskeletal, cardiac, dermatological, and gastrointestinal diseases. The resulting application serves two 
-Patient Insight : Summaries patient-practitioner conversation into actionable insight.
-Symptom Checker: A chatbot that suggests possible diseases and remedies based on real-time data.
+# 🛠️ Skills
 
-### Automatic Text Generation Using LSTM
-LSTM-based automatic text generation involves training a neural network to learn patterns in a dataset and generate new text based on those patterns. The objective is to minimize the difference between the generated and actual text using a loss function.
+- **Programming**: Python, R, SQL, SAS, MATLAB  
+- **Libraries**: Pandas, NumPy, Scikit-learn, TensorFlow, Seaborn, Matplotlib  
+- **Databases**: MySQL, PostgreSQL, Oracle, SQL Server  
+- **Visualization**: Tableau, Power BI, Excel, Alteryx  
+- **Cloud Platforms**: AWS (S3, Redshift, Glue), GCP, Azure  
+- **Tools**: Git, GitHub, Jira, Confluence, SSIS, SSRS  
+- **ML Techniques**: Regression, Clustering, A/B Testing, PCA, Random Forest, Decision Trees  
+- **Soft Skills**: Data Storytelling, KPI Tracking, Dashboarding, Collaboration  
 
-### Data Extracting
-The objective of this data extraction process is to efficiently and accurately retrieve relevant data from specified sources to enable detailed analysis, reporting, and visualization. This process aims to ensure that the data collected is comprehensive, high-quality, and aligns with the requirements of the project.
+---
 
-### Car Prize Prediction
-To develop a predictive model using linear regression that accurately estimates car prices based on various features such as ,bore,stroke,normalized-losses,horsepower,and brand, with the goal of providing reliable price assessments to assist buyers and sellers in making informed decisions.
+# 🎓 Education
 
-### MouseLess Cursor using Facial Movements
-The main objective of mouse-less cursor control using facial movement is to provide an alternative method for computer users who are unable to use a traditional mouse due to physical limitations or disabilities. By using facial movements, users can more easily navigate their computer screens.
+**M.S. in Computer Science**  
+*Wilmington University, Delaware*  
+
+---
+
+# 📜 Certifications
+
+- Anaconda Python for Data Science Professional Certificate
+
+
+---
+
+# 📬 Let's Connect
+
+If you’re looking to hire a data-driven problem solver, feel free to [email me](mailto:preethiganta246@gmail.com) or message me on [LinkedIn](https://www.linkedin.com/in/preethi-g-4b414b28b).
