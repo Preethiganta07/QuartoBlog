@@ -1,0 +1,549 @@
+---
+title: "SQL Customer Churn Analysis"
+author: "Preethi Ganta"
+date: today
+categories: [SQL, Python, Data Analytics, Churn]
+description: "Simulating a customer database, running SQL queries to uncover churn patterns, and deriving actionable business recommendations."
+image: churn_overview.png
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: false
+    highlight-style: atom-one
+    theme: flatly
+    css: styles.css
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## 🔍 Project Overview
+
+Customer churn is one of the most critical metrics for any subscription-based or e-commerce business. Losing a customer costs 5–25× more than retaining one — yet most companies only notice churn after it's too late.
+
+In this project, we:
+
+- Simulate a realistic customer database using **Python + SQLite**
+- Run **8 SQL queries** to analyze churn patterns
+- Visualize insights using **Matplotlib & Seaborn**
+- Derive **actionable business recommendations**
+
+> **Tools Used:** Python, SQLite3, Pandas, Matplotlib, Seaborn, NumPy
+
+---
+
+## 📦 Step 1: Import Libraries
+
+```{python}
+import sqlite3
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+import seaborn as sns
+from datetime import datetime, timedelta
+import warnings
+warnings.filterwarnings('ignore')
+
+# ── Styling ──────────────────────────────────────────────────────────────
+plt.rcParams['figure.facecolor'] = '#ffffff'
+plt.rcParams['axes.facecolor']   = '#f7f9fc'
+plt.rcParams['axes.edgecolor']   = '#dde3ed'
+plt.rcParams['text.color']       = '#0f1923'
+plt.rcParams['axes.labelcolor']  = '#0f1923'
+plt.rcParams['xtick.color']      = '#6b7a90'
+plt.rcParams['ytick.color']      = '#6b7a90'
+plt.rcParams['grid.color']       = '#eef2f7'
+plt.rcParams['font.family']      = 'DejaVu Sans'
+
+BLUE   = '#0070f3'
+CYAN   = '#00b4d8'
+SLATE  = '#3d4f63'
+LIGHT  = '#eef2f7'
+ACCENT = '#0070f3'
+
+print("✅ Libraries imported successfully!")
+print(f"📅 Analysis Date: {datetime.today().strftime('%B %d, %Y')}")
+```
+
+---
+
+## 🗄️ Step 2: Create SQLite Database & Simulate Data
+
+We simulate **2,000 customers** with realistic attributes:
+
+- **Demographics:** Age, Gender, Location
+- **Subscription:** Plan type, Tenure, Monthly charges
+- **Behaviour:** Login frequency, Support tickets, Payment method
+- **Target:** Churned (1) or Active (0)
+
+```{python}
+np.random.seed(42)
+N = 2000
+
+# ── Generate Customer Data ────────────────────────────────────────────────
+customer_ids   = [f"CUST{str(i).zfill(5)}" for i in range(1, N+1)]
+ages           = np.random.randint(18, 72, N)
+genders        = np.random.choice(['Male', 'Female'], N)
+locations      = np.random.choice(
+    ['North', 'South', 'East', 'West', 'Central'],
+    N, p=[0.25, 0.20, 0.25, 0.18, 0.12])
+plans          = np.random.choice(
+    ['Basic', 'Standard', 'Premium'],
+    N, p=[0.40, 0.35, 0.25])
+tenure_months  = np.random.randint(1, 73, N)
+monthly_charge = np.where(plans == 'Basic',
+                    np.random.uniform(10, 30, N),
+                    np.where(plans == 'Standard',
+                        np.random.uniform(30, 60, N),
+                        np.random.uniform(60, 100, N)))
+monthly_charge = np.round(monthly_charge, 2)
+login_freq     = np.random.randint(0, 31, N)
+support_tickets= np.random.randint(0, 11, N)
+payment_methods= np.random.choice(
+    ['Credit Card', 'Debit Card', 'Net Banking', 'UPI', 'Wallet'],
+    N, p=[0.30, 0.25, 0.20, 0.15, 0.10])
+
+# ── Churn Logic (realistic rules) ────────────────────────────────────────
+churn_prob = (
+    0.35 * (plans == 'Basic').astype(int) +
+    0.15 * (plans == 'Standard').astype(int) +
+    0.05 * (plans == 'Premium').astype(int) +
+    0.25 * (tenure_months < 6).astype(int) +
+    0.10 * (support_tickets > 5).astype(int) +
+    0.15 * (login_freq < 5).astype(int) +
+    np.random.uniform(0, 0.1, N)
+)
+churn_prob = np.clip(churn_prob, 0, 1)
+churned    = (np.random.uniform(0, 1, N) < churn_prob).astype(int)
+
+# ── Build DataFrame ───────────────────────────────────────────────────────
+df = pd.DataFrame({
+    'customer_id'     : customer_ids,
+    'age'             : ages,
+    'gender'          : genders,
+    'location'        : locations,
+    'plan'            : plans,
+    'tenure_months'   : tenure_months,
+    'monthly_charge'  : monthly_charge,
+    'login_frequency' : login_freq,
+    'support_tickets' : support_tickets,
+    'payment_method'  : payment_methods,
+    'churned'         : churned
+})
+
+# ── Load into SQLite ──────────────────────────────────────────────────────
+conn = sqlite3.connect(':memory:')
+df.to_sql('customers', conn, index=False, if_exists='replace')
+
+print(f"✅ Database created with {N} customers")
+print(f"📊 Churn Rate: {churned.mean()*100:.1f}%")
+print(f"\n🗂️  Table Schema:")
+print(df.dtypes.to_string())
+```
+
+---
+
+## 👀 Step 3: Preview the Data
+
+```{python}
+pd.read_sql("SELECT * FROM customers LIMIT 10", conn)
+```
+
+---
+
+## 🔍 Step 4: SQL Queries — Churn Analysis
+
+We run **8 key SQL queries** to understand churn patterns.
+
+### Query 1 — Overall Churn Rate
+
+```{python}
+q1 = pd.read_sql("""
+    SELECT
+        COUNT(*) AS total_customers,
+        SUM(churned) AS churned_customers,
+        ROUND(SUM(churned) * 100.0 / COUNT(*), 2) AS churn_rate_pct,
+        COUNT(*) - SUM(churned) AS active_customers
+    FROM customers
+""", conn)
+print("📊 Overall Churn Summary:")
+q1
+```
+
+### Query 2 — Churn Rate by Subscription Plan
+
+```{python}
+q2 = pd.read_sql("""
+    SELECT
+        plan,
+        COUNT(*) AS total,
+        SUM(churned) AS churned,
+        ROUND(SUM(churned) * 100.0 / COUNT(*), 2) AS churn_rate_pct,
+        ROUND(AVG(monthly_charge), 2) AS avg_monthly_charge
+    FROM customers
+    GROUP BY plan
+    ORDER BY churn_rate_pct DESC
+""", conn)
+q2
+```
+
+### Query 3 — Churn by Tenure Group
+
+```{python}
+q3 = pd.read_sql("""
+    SELECT
+        CASE
+            WHEN tenure_months <= 6  THEN '0-6 months'
+            WHEN tenure_months <= 12 THEN '7-12 months'
+            WHEN tenure_months <= 24 THEN '13-24 months'
+            WHEN tenure_months <= 48 THEN '25-48 months'
+            ELSE '49+ months'
+        END AS tenure_group,
+        COUNT(*) AS total,
+        SUM(churned) AS churned,
+        ROUND(SUM(churned) * 100.0 / COUNT(*), 2) AS churn_rate_pct
+    FROM customers
+    GROUP BY tenure_group
+    ORDER BY churn_rate_pct DESC
+""", conn)
+q3
+```
+
+### Query 4 — Churn by Location
+
+```{python}
+q4 = pd.read_sql("""
+    SELECT
+        location,
+        COUNT(*) AS total_customers,
+        SUM(churned) AS churned,
+        ROUND(SUM(churned) * 100.0 / COUNT(*), 2) AS churn_rate_pct,
+        ROUND(AVG(monthly_charge), 2) AS avg_charge
+    FROM customers
+    GROUP BY location
+    ORDER BY churn_rate_pct DESC
+""", conn)
+q4
+```
+
+### Query 5 — High Risk Customers (Churn Score)
+
+```{python}
+q5 = pd.read_sql("""
+    SELECT
+        customer_id, plan, tenure_months,
+        monthly_charge, support_tickets, login_frequency,
+        ROUND(
+            (support_tickets * 10) +
+            ((6 - MIN(login_frequency, 5)) * 8) +
+            (CASE WHEN tenure_months < 6 THEN 20 ELSE 0 END) +
+            (CASE WHEN plan = 'Basic' THEN 15 ELSE 0 END)
+        , 0) AS risk_score
+    FROM customers
+    WHERE churned = 0
+    ORDER BY risk_score DESC
+    LIMIT 10
+""", conn)
+print("⚠️  Top 10 At-Risk Active Customers:")
+q5
+```
+
+### Query 6 — Churn by Support Tickets
+
+```{python}
+q6 = pd.read_sql("""
+    SELECT
+        CASE
+            WHEN support_tickets = 0 THEN 'No tickets'
+            WHEN support_tickets <= 2 THEN '1-2 tickets'
+            WHEN support_tickets <= 5 THEN '3-5 tickets'
+            ELSE '6+ tickets'
+        END AS ticket_group,
+        COUNT(*) AS total,
+        SUM(churned) AS churned,
+        ROUND(SUM(churned) * 100.0 / COUNT(*), 2) AS churn_rate_pct
+    FROM customers
+    GROUP BY ticket_group
+    ORDER BY churn_rate_pct DESC
+""", conn)
+q6
+```
+
+### Query 7 — Revenue Lost to Churn
+
+```{python}
+q7 = pd.read_sql("""
+    SELECT
+        plan,
+        SUM(CASE WHEN churned=1 THEN monthly_charge ELSE 0 END) AS monthly_revenue_lost,
+        ROUND(SUM(CASE WHEN churned=1 THEN monthly_charge ELSE 0 END) * 12, 2) AS annual_revenue_lost,
+        SUM(CASE WHEN churned=0 THEN monthly_charge ELSE 0 END) AS monthly_revenue_retained
+    FROM customers
+    GROUP BY plan
+    ORDER BY annual_revenue_lost DESC
+""", conn)
+total_lost = q7['annual_revenue_lost'].sum()
+print(f"🔴 Total Annual Revenue Lost: ${total_lost:,.0f}")
+q7
+```
+
+### Query 8 — Churn by Payment Method
+
+```{python}
+q8 = pd.read_sql("""
+    SELECT
+        payment_method,
+        COUNT(*) AS total,
+        SUM(churned) AS churned,
+        ROUND(SUM(churned) * 100.0 / COUNT(*), 2) AS churn_rate_pct
+    FROM customers
+    GROUP BY payment_method
+    ORDER BY churn_rate_pct DESC
+""", conn)
+q8
+```
+
+---
+
+## 📊 Step 5: Visualizations
+
+### Chart 1 — Overview: Churn Rate, by Plan & by Tenure
+
+```{python}
+#| fig-width: 14
+#| fig-height: 5
+#| fig-cap: "Customer Churn Overview"
+
+fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+fig.suptitle('Customer Churn Analysis — Overview', fontsize=16,
+             fontweight='bold', color='#0f1923', y=1.02)
+
+# Donut chart
+total     = int(q1['total_customers'][0])
+churned_n = int(q1['churned_customers'][0])
+active_n  = int(q1['active_customers'][0])
+ax = axes[0]
+wedges, texts, autotexts = ax.pie(
+    [churned_n, active_n],
+    labels=['Churned', 'Active'],
+    autopct='%1.1f%%',
+    colors=[BLUE, CYAN],
+    startangle=90,
+    wedgeprops={'width': 0.55, 'edgecolor': '#ffffff', 'linewidth': 3},
+    textprops={'color': '#0f1923', 'fontsize': 12}
+)
+for at in autotexts:
+    at.set_fontsize(13); at.set_fontweight('bold')
+ax.set_title('Overall Churn Rate', color='#0f1923', fontsize=13, pad=15)
+ax.text(0, 0, f"{q1['churn_rate_pct'][0]}%", ha='center', va='center',
+        fontsize=22, fontweight='bold', color=BLUE)
+
+# Churn by Plan
+ax2 = axes[1]
+colors_plan = [BLUE if p=='Basic' else CYAN if p=='Standard' else SLATE
+               for p in q2['plan']]
+bars = ax2.bar(q2['plan'], q2['churn_rate_pct'], color=colors_plan,
+               edgecolor='#ffffff', linewidth=1.5, width=0.5)
+for bar, val in zip(bars, q2['churn_rate_pct']):
+    ax2.text(bar.get_x()+bar.get_width()/2, bar.get_height()+0.5,
+             f'{val}%', ha='center', va='bottom', color='#0f1923', fontweight='bold')
+ax2.set_title('Churn Rate by Plan', color='#0f1923', fontsize=13)
+ax2.set_ylabel('Churn Rate (%)', color='#6b7a90')
+ax2.set_ylim(0, max(q2['churn_rate_pct'])*1.25)
+ax2.grid(axis='y', alpha=0.4)
+
+# Churn by Tenure
+ax3 = axes[2]
+order     = ['0-6 months','7-12 months','13-24 months','25-48 months','49+ months']
+q3_sorted = q3.set_index('tenure_group').reindex(order).reset_index()
+colors_t  = [BLUE, '#2d8fe0', CYAN, '#4fc3d7', SLATE]
+bars3 = ax3.barh(q3_sorted['tenure_group'], q3_sorted['churn_rate_pct'],
+                 color=colors_t, edgecolor='#ffffff', linewidth=1.5)
+for bar, val in zip(bars3, q3_sorted['churn_rate_pct']):
+    ax3.text(val+0.3, bar.get_y()+bar.get_height()/2,
+             f'{val}%', va='center', color='#0f1923', fontweight='bold')
+ax3.set_title('Churn Rate by Tenure', color='#0f1923', fontsize=13)
+ax3.set_xlabel('Churn Rate (%)', color='#6b7a90')
+ax3.grid(axis='x', alpha=0.4)
+
+plt.tight_layout()
+plt.show()
+```
+
+### Chart 2 — Churn by Location & Support Tickets
+
+```{python}
+#| fig-width: 12
+#| fig-height: 5
+#| fig-cap: "Churn by Location and Support Tickets"
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+fig.suptitle('Churn by Location & Support Tickets', fontsize=15,
+             fontweight='bold', color='#0f1923', y=1.02)
+
+# Location
+ax1 = axes[0]
+loc_colors = [BLUE, CYAN, SLATE, '#2d8fe0', '#4fc3d7']
+bars = ax1.bar(q4['location'], q4['churn_rate_pct'],
+               color=loc_colors, edgecolor='#ffffff', linewidth=1.5, width=0.55)
+for bar, val in zip(bars, q4['churn_rate_pct']):
+    ax1.text(bar.get_x()+bar.get_width()/2, bar.get_height()+0.3,
+             f'{val}%', ha='center', va='bottom', color='#0f1923',
+             fontweight='bold', fontsize=11)
+ax1.set_title('Churn Rate by Location', color='#0f1923', fontsize=13)
+ax1.set_ylabel('Churn Rate (%)', color='#6b7a90')
+ax1.set_ylim(0, max(q4['churn_rate_pct'])*1.2)
+ax1.grid(axis='y', alpha=0.4)
+
+# Support Tickets
+ax2 = axes[1]
+tkt_order  = ['No tickets','1-2 tickets','3-5 tickets','6+ tickets']
+q6_sorted  = q6.set_index('ticket_group').reindex(tkt_order).reset_index()
+tkt_colors = [CYAN, '#2d8fe0', BLUE, SLATE]
+bars2 = ax2.bar(q6_sorted['ticket_group'], q6_sorted['churn_rate_pct'],
+                color=tkt_colors, edgecolor='#ffffff', linewidth=1.5, width=0.55)
+for bar, val in zip(bars2, q6_sorted['churn_rate_pct']):
+    ax2.text(bar.get_x()+bar.get_width()/2, bar.get_height()+0.3,
+             f'{val}%', ha='center', va='bottom', color='#0f1923',
+             fontweight='bold', fontsize=11)
+ax2.set_title('Churn Rate by Support Tickets', color='#0f1923', fontsize=13)
+ax2.set_ylabel('Churn Rate (%)', color='#6b7a90')
+ax2.set_ylim(0, max(q6_sorted['churn_rate_pct'].dropna())*1.2)
+ax2.grid(axis='y', alpha=0.4)
+
+plt.tight_layout()
+plt.show()
+```
+
+### Chart 3 — Revenue Impact
+
+```{python}
+#| fig-width: 12
+#| fig-height: 5
+#| fig-cap: "Revenue Impact of Churn"
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+fig.suptitle('Revenue Impact of Churn', fontsize=15,
+             fontweight='bold', color='#0f1923', y=1.02)
+
+# Annual Revenue Lost
+ax1 = axes[0]
+plan_colors = [BLUE, CYAN, SLATE]
+bars = ax1.bar(q7['plan'], q7['annual_revenue_lost']/1000,
+               color=plan_colors, edgecolor='#ffffff', linewidth=1.5, width=0.5)
+for bar, val in zip(bars, q7['annual_revenue_lost']):
+    ax1.text(bar.get_x()+bar.get_width()/2, bar.get_height()+0.3,
+             f'${val/1000:.0f}K', ha='center', va='bottom',
+             color='#0f1923', fontweight='bold', fontsize=11)
+ax1.set_title('Annual Revenue Lost by Plan', color='#0f1923', fontsize=13)
+ax1.set_ylabel('Revenue Lost ($K)', color='#6b7a90')
+ax1.grid(axis='y', alpha=0.4)
+
+# Retained vs Lost (stacked)
+ax2 = axes[1]
+x      = np.arange(len(q7['plan']))
+width  = 0.5
+ax2.bar(x, q7['monthly_revenue_lost'], width,
+        label='Lost (Monthly)', color=BLUE, alpha=0.85, edgecolor='#ffffff')
+ax2.bar(x, q7['monthly_revenue_retained'], width,
+        bottom=q7['monthly_revenue_lost'],
+        label='Retained (Monthly)', color=CYAN, alpha=0.85, edgecolor='#ffffff')
+ax2.set_xticks(x); ax2.set_xticklabels(q7['plan'])
+ax2.set_title('Monthly Revenue: Retained vs Lost', color='#0f1923', fontsize=13)
+ax2.set_ylabel('Monthly Revenue ($)', color='#6b7a90')
+ax2.legend(facecolor='#f7f9fc', edgecolor='#dde3ed')
+ax2.grid(axis='y', alpha=0.4)
+
+plt.tight_layout()
+plt.show()
+```
+
+### Chart 4 — Age Distribution & Correlation Heatmap
+
+```{python}
+#| fig-width: 13
+#| fig-height: 5
+#| fig-cap: "Age Distribution and Feature Correlation"
+
+fig, axes = plt.subplots(1, 2, figsize=(16, 5))
+fig.suptitle('Deep Dive — Age Distribution & Correlation Heatmap',
+             fontsize=15, fontweight='bold', color='#0f1923', y=1.02)
+
+# Age distribution
+ax1 = axes[0]
+churned_ages = df[df['churned']==1]['age']
+active_ages  = df[df['churned']==0]['age']
+ax1.hist(active_ages,  bins=20, alpha=0.7, color=CYAN,  label='Active',  edgecolor='#ffffff')
+ax1.hist(churned_ages, bins=20, alpha=0.7, color=BLUE, label='Churned', edgecolor='#ffffff')
+ax1.set_title('Age Distribution: Active vs Churned', color='#0f1923', fontsize=13)
+ax1.set_xlabel('Age', color='#6b7a90')
+ax1.set_ylabel('Count', color='#6b7a90')
+ax1.legend(facecolor='#f7f9fc', edgecolor='#dde3ed')
+ax1.grid(alpha=0.4)
+
+# Correlation heatmap
+ax2 = axes[1]
+num_cols = ['age','tenure_months','monthly_charge','login_frequency',
+            'support_tickets','churned']
+corr = df[num_cols].corr()
+cmap = sns.diverging_palette(210, 10, as_cmap=True)
+sns.heatmap(corr, ax=ax2, annot=True, fmt='.2f', cmap=cmap,
+            linewidths=0.5, linecolor='#ffffff',
+            annot_kws={'size': 10, 'color': '#0f1923'},
+            cbar_kws={'shrink': 0.8})
+ax2.set_title('Feature Correlation Heatmap', color='#0f1923', fontsize=13)
+
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## 📝 Step 6: Key Insights & Business Recommendations
+
+### 🔵 Key Findings
+
+| # | Finding | Impact |
+|---|---------|--------|
+| 1 | **Basic plan has highest churn (~45%)** | Customers feel undervalued at low price point |
+| 2 | **New customers (0–6 months) churn most** | Onboarding experience is critical |
+| 3 | **6+ support tickets = highest churn** | Poor service experience drives churn |
+| 4 | **Low login frequency predicts churn** | Disengaged users leave silently |
+| 5 | **Annual revenue lost to churn is significant** | Retention > Acquisition in ROI |
+
+### ✅ Business Recommendations
+
+1. **Improve Basic plan onboarding** — Add welcome emails, tutorials, check-ins in first 90 days
+2. **Create Early Warning System** — Flag customers with low logins + high support tickets
+3. **Offer retention discounts** — Target at-risk customers before they cancel
+4. **Fix top support pain points** — Reduce tickets by improving product/documentation
+5. **Loyalty rewards for long-tenure customers** — Reward customers who stay 12+ months
+
+---
+
+## 📋 Final Summary
+
+```{python}
+total_c     = int(q1['total_customers'][0])
+churn_count = int(q1['churned_customers'][0])
+churn_rate  = float(q1['churn_rate_pct'][0])
+rev_lost    = q7['annual_revenue_lost'].sum()
+
+print("=" * 55)
+print("       CHURN ANALYSIS — FINAL SUMMARY")
+print("=" * 55)
+print(f"  Total Customers Analyzed : {total_c:,}")
+print(f"  Churned Customers        : {churn_count:,}")
+print(f"  Overall Churn Rate       : {churn_rate}%")
+print(f"  Annual Revenue at Risk   : ${rev_lost:,.0f}")
+print(f"  Highest Risk Segment     : Basic Plan, 0-6 Months")
+print(f"  Key Churn Driver         : Support Tickets > 5")
+print("=" * 55)
+print("  ✅ Analysis Complete | By Preethi Ganta, Data Analyst")
+print("=" * 55)
+```
+
+> 📌 *This analysis was performed using Python + SQLite. In a production environment, this would connect to PostgreSQL/MySQL with real transactional data.*

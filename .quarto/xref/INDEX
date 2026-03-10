@@ -63,5 +63,11 @@
   },
   "new_env/lib/python3.11/site-packages/httpx-0.28.1.dist-info/licenses/LICENSE.md": {
     "LICENSE.html": "91bb351b"
+  },
+  "posts/E-commerce-Sales-Dashboard/Index.qmd": {
+    "Index.html": "f9cc6f17"
+  },
+  "posts/SQL Customer Churn Analysis/Churn-Analysis.qmd": {
+    "Churn-Analysis.html": "43dc89b6"
   }
 }
