@@ -1,5 +1,5 @@
 ---
-title: "Data Sciencist"
+title: "Data Analyst"
 listing:
   contents: posts
   sort: "date desc"
