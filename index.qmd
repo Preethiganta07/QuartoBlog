@@ -1,774 +1,496 @@
 ---
-title: "Preethi Ganta | Data Analyst"
-page-layout: full
-toc: false
+title: "E-Commerce Sales Dashboard"
+author: "Preethi Ganta"
+date: "2024-08-01"
+categories: [code, Analysis, Dashboard]
+image: "thumbnail.png"
+description: "An interactive E-Commerce Sales Dashboard built with HTML, CSS, and Chart.js — covering revenue trends, category breakdowns, regional sales, and top product performance."
+format:
+  html:
+    toc: false
+    page-layout: full
+    embed-resources: true
 ---
 
 ```{=html}
-<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #070b18; font-family: 'DM Sans', sans-serif; color: #e6f1ff; }
 
-  body, .page-layout-full {
-    background: #f9fafb !important;
-    font-family: 'DM Sans', sans-serif !important;
-  }
-
-  .quarto-title, #title-block-header { display: none !important; }
-
-  :root {
-    --blue:    #0070f3;
-    --cyan:    #00b4d8;
-    --dark:    #0a0f1e;
-    --text:    #1a2332;
-    --muted:   #5a6a7e;
-    --border:  #e2e8f0;
-    --surface: #ffffff;
-    --bg:      #f9fafb;
-  }
-
-  /* ── HERO ─────────────────────────────────────── */
-  .pg-hero {
-    position: relative;
-    min-height: 100vh;
+  .dash-header {
+    background: linear-gradient(90deg, #0d1224 0%, #121829 100%);
+    border-bottom: 1px solid #1e2a45;
+    padding: 18px 28px;
     display: flex;
     align-items: center;
-    padding: 0 6vw;
-    overflow: hidden;
-    background: var(--dark);
-  }
-
-  .pg-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 70% at 70% 50%, rgba(0,112,243,0.18) 0%, transparent 65%),
-      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(0,180,216,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 30% 30% at 80% 10%, rgba(0,180,216,0.08) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
-  .pg-hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,112,243,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,112,243,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 720px;
-  }
-
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--cyan);
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.2s forwards;
-  }
-
-  .hero-eyebrow::before {
-    content: '';
-    width: 32px; height: 1px;
-    background: var(--cyan);
-  }
-
-  .hero-name {
-    font-family: 'Clash Display', sans-serif;
-    font-size: clamp(3.2rem, 7vw, 6rem);
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1.05;
-    letter-spacing: -2px;
-    margin-bottom: 12px;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 0.35s forwards;
-  }
-
-  .hero-name span {
-    background: linear-gradient(135deg, var(--blue), var(--cyan));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero-title {
-    font-family: 'Clash Display', sans-serif;
-    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-    font-weight: 500;
-    color: rgba(255,255,255,0.55);
-    letter-spacing: -0.3px;
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 0.5s forwards;
-  }
-
-  .hero-desc {
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.45);
-    line-height: 1.75;
-    max-width: 520px;
-    margin-bottom: 44px;
-    font-weight: 300;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 0.65s forwards;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 14px;
+    justify-content: space-between;
     flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 0.8s forwards;
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 28px;
-    background: linear-gradient(135deg, var(--blue), var(--cyan));
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.25s;
-    box-shadow: 0 4px 20px rgba(0,112,243,0.35);
-  }
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0,112,243,0.45);
-    color: #fff;
-    text-decoration: none;
-  }
-
-  .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 28px;
-    background: transparent;
-    color: rgba(255,255,255,0.7);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.25s;
-  }
-  .btn-ghost:hover {
-    border-color: rgba(255,255,255,0.4);
-    color: #fff;
-    background: rgba(255,255,255,0.05);
-    text-decoration: none;
-  }
-
-  .hero-stats {
-    position: absolute;
-    right: 6vw;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    z-index: 2;
-    opacity: 0;
-    animation: fadeLeft 0.8s ease 1s forwards;
-  }
-
-  .stat-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: 20px 24px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    min-width: 130px;
-    transition: all 0.3s;
-  }
-  .stat-card:hover {
-    background: rgba(0,112,243,0.1);
-    border-color: rgba(0,112,243,0.3);
-    transform: translateX(-4px);
-  }
-
-  .stat-val {
-    font-family: 'Clash Display', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--blue), var(--cyan));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-
-  .stat-lbl {
-    font-size: 11px;
-    color: rgba(255,255,255,0.4);
-    letter-spacing: 0.5px;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .scroll-hint {
-    position: absolute;
-    bottom: 36px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255,255,255,0.2);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    z-index: 2;
-    animation: bounce 2s ease infinite;
-  }
-
-  /* ── SHARED ───────────────────────────────────── */
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 56px;
-  }
-
-  .section-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--blue);
-    background: rgba(0,112,243,0.07);
-    border: 1px solid rgba(0,112,243,0.15);
-    padding: 5px 12px;
-    border-radius: 20px;
-    white-space: nowrap;
-  }
-
-  .section-title {
-    font-family: 'Clash Display', sans-serif;
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: -0.5px;
-  }
-
-  /* ── ABOUT ────────────────────────────────────── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-
-  .about-text p {
-    font-size: 1.05rem;
-    color: var(--muted);
-    line-height: 1.85;
-    margin-bottom: 20px;
-  }
-
-  .about-text p strong { color: var(--text); font-weight: 500; }
-
-  .about-highlights {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .highlight-item {
-    display: flex;
-    align-items: center;
     gap: 12px;
-    padding: 14px 18px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    font-size: 14px;
-    color: var(--text);
-    font-weight: 500;
-    transition: all 0.2s;
+    position: sticky; top: 0; z-index: 100;
   }
-  .highlight-item:hover {
-    border-color: rgba(0,112,243,0.3);
-    box-shadow: 0 2px 12px rgba(0,112,243,0.08);
-    transform: translateX(4px);
-  }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #00D4AA, #00a8ff); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .logo-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; }
+  .logo-sub { color: #8892b0; font-size: 10px; font-family: 'DM Mono', monospace; letter-spacing: 1.5px; }
 
-  .hi-icon {
-    width: 36px; height: 36px;
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
-    background: rgba(0,112,243,0.08);
-    flex-shrink: 0;
+  .tabs { display: flex; gap: 6px; }
+  .tab-btn {
+    padding: 8px 18px; border-radius: 8px; border: none;
+    background: transparent; color: #8892b0; font-family: 'DM Sans', sans-serif;
+    font-size: 13px; cursor: pointer; transition: all 0.2s;
+    border-bottom: 2px solid transparent; text-transform: capitalize;
   }
+  .tab-btn.active { background: rgba(0,212,170,0.1); color: #00D4AA; border-bottom-color: #00D4AA; }
 
-  /* ── SKILLS ───────────────────────────────────── */
-  .skills-bg {
-    background: var(--dark);
-    padding: 100px 6vw;
+  .period-btns { display: flex; gap: 6px; }
+  .period-btn {
+    padding: 6px 14px; border-radius: 6px; border: 1px solid #2d3748;
+    background: transparent; color: #8892b0; font-family: 'DM Mono', monospace;
+    font-size: 12px; cursor: pointer; transition: all 0.2s;
   }
+  .period-btn.active { border-color: #00D4AA; background: rgba(0,212,170,0.1); color: #00D4AA; }
 
-  .skills-inner { max-width: 1200px; margin: 0 auto; }
-  .skills-bg .section-title { color: #fff; }
-  .skills-bg .section-tag {
-    color: var(--cyan);
-    background: rgba(0,180,216,0.08);
-    border-color: rgba(0,180,216,0.2);
-  }
+  .main { padding: 28px; max-width: 1400px; margin: 0 auto; }
 
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 24px; }
+  .kpi-card {
+    background: linear-gradient(135deg, #1a1f35 0%, #0d1224 100%);
+    border-radius: 16px; padding: 22px;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
   }
+  .kpi-card:hover { transform: translateY(-4px); }
+  .kpi-glow { position: absolute; top: 0; right: 0; width: 80px; height: 80px; border-radius: 0 16px 0 80px; }
+  .kpi-icon { font-size: 26px; margin-bottom: 8px; }
+  .kpi-label { color: #8892b0; font-size: 11px; font-family: 'DM Mono', monospace; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .kpi-value { font-family: 'Syne', sans-serif; font-size: 30px; font-weight: 700; line-height: 1; }
+  .kpi-change { margin-top: 10px; font-size: 13px; font-weight: 600; }
+  .kpi-sub { color: #8892b0; font-size: 12px; margin-left: 6px; font-weight: 400; }
 
-  .skill-group {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 14px;
-    padding: 24px;
-    transition: all 0.3s;
-  }
-  .skill-group:hover {
-    background: rgba(0,112,243,0.08);
-    border-color: rgba(0,112,243,0.25);
-    transform: translateY(-3px);
-  }
+  .charts-row { display: grid; gap: 18px; margin-bottom: 18px; }
+  .charts-2-1 { grid-template-columns: 2fr 1fr; }
+  .charts-1-1 { grid-template-columns: 1fr 1fr; }
 
-  .skill-group-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--cyan);
-    margin-bottom: 16px;
+  .card {
+    background: linear-gradient(135deg, #1a1f35 0%, #0d1224 100%);
+    border-radius: 16px; padding: 24px; border: 1px solid #1e2a45;
   }
+  .card-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px; margin-bottom: 4px; }
+  .card-sub { color: #8892b0; font-size: 12px; margin-bottom: 20px; }
 
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  /* Category legend */
+  .cat-legend { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+  .cat-row { display: flex; justify-content: space-between; align-items: center; }
+  .cat-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+  .cat-name { font-size: 13px; color: #ccd6f6; margin-left: 8px; }
 
-  .skill-tag {
-    font-size: 12px;
-    padding: 5px 10px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 5px;
-    color: rgba(255,255,255,0.7);
-    transition: all 0.2s;
-  }
-  .skill-tag:hover {
-    background: rgba(0,112,243,0.15);
-    border-color: rgba(0,112,243,0.3);
-    color: #fff;
-  }
+  /* Top Products */
+  .product-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .product-rank { width: 28px; height: 28px; border-radius: 8px; background: #1e2a45; border: 1px solid #2d3748; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 11px; color: #8892b0; flex-shrink: 0; }
+  .product-rank.top { background: rgba(255,217,61,0.1); border-color: rgba(255,217,61,0.3); color: #FFD93D; }
+  .product-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .product-bar-bg { height: 4px; background: #1e2a45; border-radius: 2px; overflow: hidden; }
+  .product-bar { height: 100%; background: linear-gradient(90deg, #00D4AA, #00a8ff); border-radius: 2px; }
+  .product-rev { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600; text-align: right; }
+  .product-trend { color: #00D4AA; font-size: 11px; text-align: right; }
 
-  /* ── PROJECTS ─────────────────────────────────── */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-  }
+  /* Region bars */
+  .region-row { margin-bottom: 16px; }
+  .region-header { display: flex; justify-content: space-between; margin-bottom: 7px; }
+  .region-name { font-weight: 500; font-size: 13px; display: flex; align-items: center; gap: 8px; }
+  .region-dot { width: 12px; height: 12px; border-radius: 4px; }
+  .region-val { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600; }
+  .region-pct { color: #8892b0; font-size: 12px; margin-left: 12px; }
+  .region-bar-bg { height: 6px; background: #1e2a45; border-radius: 3px; }
+  .region-bar { height: 100%; border-radius: 3px; opacity: 0.85; }
 
-  .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.3s;
-    text-decoration: none;
-    display: block;
-  }
-  .project-card:hover {
-    border-color: rgba(0,112,243,0.3);
-    box-shadow: 0 12px 40px rgba(0,112,243,0.1);
-    transform: translateY(-4px);
-    text-decoration: none;
-  }
+  /* Table */
+  .prod-table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
+  .prod-table th { color: #8892b0; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 14px; text-align: left; font-weight: 400; }
+  .prod-table td { padding: 15px 14px; background: #0d1224; transition: background 0.2s; font-size: 13px; }
+  .prod-table tr:hover td { background: #1a1f35; }
+  .prod-table td:first-child { border-radius: 10px 0 0 10px; }
+  .prod-table td:last-child { border-radius: 0 10px 10px 0; }
+  .badge { background: rgba(0,212,170,0.12); color: #00D4AA; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
 
-  .project-card-top { height: 6px; background: linear-gradient(90deg, var(--blue), var(--cyan)); }
-  .project-card:nth-child(2) .project-card-top { background: linear-gradient(90deg, var(--cyan), var(--blue)); }
-  .project-card:nth-child(3) .project-card-top { background: linear-gradient(90deg, #0070f3, #005bc4); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
 
-  .project-card-body { padding: 28px; }
-
-  .project-icon {
-    width: 48px; height: 48px;
-    border-radius: 12px;
-    background: rgba(0,112,243,0.08);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    margin-bottom: 18px;
-  }
-
-  .project-title {
-    font-family: 'Clash Display', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 10px;
-    letter-spacing: -0.2px;
-  }
-
-  .project-desc {
-    font-size: 13.5px;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 20px;
-  }
-
-  .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
-
-  .project-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    padding: 4px 9px;
-    background: rgba(0,112,243,0.06);
-    border: 1px solid rgba(0,112,243,0.12);
-    border-radius: 4px;
-    color: var(--blue);
-    letter-spacing: 0.5px;
-  }
-
-  .project-link {
-    font-size: 13px;
-    color: var(--blue);
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  /* ── CONTACT ──────────────────────────────────── */
-  .contact-bg {
-    background: var(--dark);
-    padding: 100px 6vw;
-    text-align: center;
-  }
-
-  .contact-inner { max-width: 600px; margin: 0 auto; }
-  .contact-bg p {
-    color: rgba(255,255,255,0.45);
-    font-size: 1rem;
-    margin-bottom: 44px;
-    font-weight: 300;
-  }
-
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .social-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 13px 22px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 8px;
-    color: rgba(255,255,255,0.65);
-    font-size: 13.5px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.25s;
-  }
-  .social-link:hover {
-    background: rgba(0,112,243,0.12);
-    border-color: rgba(0,112,243,0.35);
-    color: #fff;
-    text-decoration: none;
-    transform: translateY(-2px);
-  }
-
-  /* ── FOOTER ───────────────────────────────────── */
-  .pg-footer {
-    background: #06090f;
-    padding: 28px 6vw;
-    text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: rgba(255,255,255,0.2);
-    border-top: 1px solid rgba(255,255,255,0.04);
-  }
-  .pg-footer strong { color: var(--cyan); }
-
-  /* ── ANIMATIONS ───────────────────────────────── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeLeft {
-    from { opacity: 0; transform: translate(24px, -50%); }
-    to   { opacity: 1; transform: translate(0, -50%); }
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50%       { transform: translateX(-50%) translateY(8px); }
-  }
+  .footer { margin-top: 28px; text-align: center; color: #4a5568; font-size: 11px; font-family: 'DM Mono', monospace; padding: 16px; }
 
   @media (max-width: 900px) {
-    .hero-stats { display: none; }
-    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .charts-2-1, .charts-1-1 { grid-template-columns: 1fr; }
   }
-  @media (max-width: 600px) {
-    .pg-hero { padding: 80px 6vw 60px; min-height: auto; }
-    .hero-cta { flex-direction: column; }
-    .btn-primary, .btn-ghost { justify-content: center; }
+  @media (max-width: 500px) {
+    .kpi-grid { grid-template-columns: 1fr; }
   }
 </style>
+</head>
+<body>
 
-<!-- HERO -->
-<section class="pg-hero">
-  <div class="hero-content">
-    <div class="hero-eyebrow">Available for opportunities</div>
-    <h1 class="hero-name">Preethi<br/><span>Ganta</span></h1>
-    <p class="hero-title">Data Analyst · SQL · Python · Power BI</p>
-    <p class="hero-desc">
-      Transforming raw data into clear, actionable insights.
-      I specialise in customer analytics, churn modelling,
-      and building dashboards that help businesses make smarter decisions.
-    </p>
-    <div class="hero-cta">
-      <a href="about.html" class="btn-primary">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
-        View My Work
-      </a>
-      <a href="https://github.com/Preethiganta07" target="_blank" class="btn-ghost">
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
-      </a>
+<!-- HEADER -->
+<div class="dash-header">
+  <div class="logo">
+    <div class="logo-icon">⚡</div>
+    <div>
+      <div class="logo-title">ShopMetrics</div>
+      <div class="logo-sub">E-COMMERCE ANALYTICS</div>
+    </div>
+  </div>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
+    <button class="tab-btn" onclick="switchTab('products')">Products</button>
+    <button class="tab-btn" onclick="switchTab('regions')">Regions</button>
+  </div>
+  <div class="period-btns">
+    <button class="period-btn" onclick="setPeriod(3, this)">3M</button>
+    <button class="period-btn" onclick="setPeriod(6, this)">6M</button>
+    <button class="period-btn active" onclick="setPeriod(12, this)">12M</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card" style="border:1px solid rgba(0,212,170,0.15); box-shadow:0 4px 24px rgba(0,212,170,0.1)">
+      <div class="kpi-glow" style="background:radial-gradient(circle,rgba(0,212,170,0.15) 0%,transparent 70%)"></div>
+      <div class="kpi-icon">💰</div>
+      <div class="kpi-label">Total Revenue</div>
+      <div class="kpi-value" id="kpi-rev">$814K</div>
+      <div class="kpi-change" style="color:#00D4AA">▲ 23.4% <span class="kpi-sub">vs last year</span></div>
+    </div>
+    <div class="kpi-card" style="border:1px solid rgba(0,168,255,0.15); box-shadow:0 4px 24px rgba(0,168,255,0.1)">
+      <div class="kpi-glow" style="background:radial-gradient(circle,rgba(0,168,255,0.15) 0%,transparent 70%)"></div>
+      <div class="kpi-icon">📦</div>
+      <div class="kpi-label">Total Orders</div>
+      <div class="kpi-value" id="kpi-orders">6,323</div>
+      <div class="kpi-change" style="color:#00a8ff">▲ 18.7% <span class="kpi-sub">vs last year</span></div>
+    </div>
+    <div class="kpi-card" style="border:1px solid rgba(255,217,61,0.15); box-shadow:0 4px 24px rgba(255,217,61,0.1)">
+      <div class="kpi-glow" style="background:radial-gradient(circle,rgba(255,217,61,0.15) 0%,transparent 70%)"></div>
+      <div class="kpi-icon">🎯</div>
+      <div class="kpi-label">Avg Order Value</div>
+      <div class="kpi-value" id="kpi-aov">$129</div>
+      <div class="kpi-change" style="color:#FFD93D">▲ 4.2% <span class="kpi-sub">vs last year</span></div>
+    </div>
+    <div class="kpi-card" style="border:1px solid rgba(199,125,255,0.15); box-shadow:0 4px 24px rgba(199,125,255,0.1)">
+      <div class="kpi-glow" style="background:radial-gradient(circle,rgba(199,125,255,0.15) 0%,transparent 70%)"></div>
+      <div class="kpi-icon">📊</div>
+      <div class="kpi-label">Conversion Rate</div>
+      <div class="kpi-value">8.6%</div>
+      <div class="kpi-change" style="color:#FF6B6B">▼ 1.3% <span class="kpi-sub">vs last year</span></div>
     </div>
   </div>
 
-  <div class="hero-stats">
-    <div class="stat-card">
-      <div class="stat-val">5+</div>
-      <div class="stat-lbl">Projects</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val">4+</div>
-      <div class="stat-lbl">Years Exp.</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val">SQL</div>
-      <div class="stat-lbl">Primary Tool</div>
-    </div>
-  </div>
-
-  <div class="scroll-hint">
-    <span>scroll</span>
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section style="background:#fff; padding: 100px 6vw;">
-  <div style="max-width:1200px; margin:0 auto;">
-    <div class="section-header">
-      <span class="section-tag">About Me</span>
-      <h2 class="section-title">Turning Data into Decisions</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>Hi, I'm <strong>Preethi Ganta</strong> — a Data Analyst with <strong>4+ years of experience</strong> and a passion for finding the story hidden inside numbers. I enjoy working across the full analytics pipeline, from wrangling messy datasets to building clean, interactive dashboards.</p>
-        <p>I'm currently seeking <strong>Data Analyst roles</strong> where I can apply my skills in SQL, Python, and data visualisation to drive real business impact. I thrive in environments where curiosity is valued and data drives decisions.</p>
-        <p>When I'm not querying databases, I'm building portfolio projects, exploring new datasets, and sharing insights through this blog.</p>
+  <!-- OVERVIEW TAB -->
+  <div id="tab-overview" class="tab-panel active">
+    <div class="charts-row charts-2-1">
+      <div class="card">
+        <div class="card-title">Revenue Trend</div>
+        <div class="card-sub">Monthly revenue & order volume</div>
+        <canvas id="revenueChart" height="220"></canvas>
       </div>
-      <div class="about-highlights">
-        <div class="highlight-item"><div class="hi-icon">🎯</div><span>Specialised in Customer & Churn Analytics</span></div>
-        <div class="highlight-item"><div class="hi-icon">📊</div><span>Dashboard design with Power BI & Tableau</span></div>
-        <div class="highlight-item"><div class="hi-icon">🗄️</div><span>Advanced SQL — window functions, CTEs, subqueries</span></div>
-        <div class="highlight-item"><div class="hi-icon">🐍</div><span>Python for data wrangling & visualisation</span></div>
-        <div class="highlight-item"><div class="hi-icon">📈</div><span>Translating analysis into business recommendations</span></div>
+      <div class="card">
+        <div class="card-title">Sales by Category</div>
+        <div class="card-sub">Revenue share breakdown</div>
+        <canvas id="categoryChart" height="180"></canvas>
+        <div class="cat-legend" id="catLegend"></div>
+      </div>
+    </div>
+    <div class="charts-row charts-1-1">
+      <div class="card">
+        <div class="card-title">Weekly Traffic</div>
+        <div class="card-sub">Visitors vs Conversions</div>
+        <canvas id="trafficChart" height="200"></canvas>
+      </div>
+      <div class="card">
+        <div class="card-title">Top Products</div>
+        <div class="card-sub">By total revenue generated</div>
+        <div id="topProducts"></div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- SKILLS -->
-<section class="skills-bg">
-  <div class="skills-inner">
-    <div class="section-header">
-      <span class="section-tag">Skills & Tools</span>
-      <h2 class="section-title">My Analytical Toolkit</h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <div class="skill-group-title">Languages</div>
-        <div class="skill-tags">
-          <span class="skill-tag">SQL</span><span class="skill-tag">Python</span><span class="skill-tag">R</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Python Libraries</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">Seaborn</span><span class="skill-tag">Scikit-learn</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Visualisation</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Power BI</span><span class="skill-tag">Tableau</span><span class="skill-tag">Plotly</span><span class="skill-tag">Excel</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Databases</div>
-        <div class="skill-tags">
-          <span class="skill-tag">PostgreSQL</span><span class="skill-tag">MySQL</span><span class="skill-tag">SQLite</span><span class="skill-tag">BigQuery</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Analytics</div>
-        <div class="skill-tags">
-          <span class="skill-tag">A/B Testing</span><span class="skill-tag">Cohort Analysis</span><span class="skill-tag">Churn Modelling</span><span class="skill-tag">KPI Reporting</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Tools</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Git</span><span class="skill-tag">Jupyter</span><span class="skill-tag">Quarto</span><span class="skill-tag">VS Code</span>
-        </div>
+  <!-- PRODUCTS TAB -->
+  <div id="tab-products" class="tab-panel">
+    <div class="card">
+      <div class="card-title">Product Performance</div>
+      <div class="card-sub">Detailed product-level analytics</div>
+      <div style="overflow-x:auto">
+        <table class="prod-table">
+          <thead>
+            <tr>
+              <th>Rank</th><th>Product</th><th>Units Sold</th><th>Revenue</th><th>Growth</th><th>Performance</th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody"></tbody>
+        </table>
       </div>
     </div>
   </div>
-</section>
 
-<!-- PROJECTS -->
-<section style="background: var(--bg); padding: 100px 6vw;">
-  <div style="max-width:1200px; margin:0 auto;">
-    <div class="section-header">
-      <span class="section-tag">Featured Projects</span>
-      <h2 class="section-title">Work I'm Proud Of</h2>
+  <!-- REGIONS TAB -->
+  <div id="tab-regions" class="tab-panel">
+    <div class="charts-row charts-1-1">
+      <div class="card">
+        <div class="card-title">Sales by Region</div>
+        <div class="card-sub">Regional revenue distribution</div>
+        <canvas id="regionChart" height="260"></canvas>
+      </div>
+      <div class="card">
+        <div class="card-title">Region Breakdown</div>
+        <div class="card-sub">Performance metrics per region</div>
+        <div id="regionBars"></div>
+      </div>
     </div>
-    <div class="projects-grid">
-      <a href="posts/SQL Customer Churn Analysis/Churn-Analysis.html" class="project-card">
-        <div class="project-card-top"></div>
-        <div class="project-card-body">
-          <div class="project-icon">🔍</div>
-          <div class="project-title">SQL Customer Churn Analysis</div>
-          <p class="project-desc">Simulated a 2,000-customer database, ran 8 targeted SQL queries to uncover churn patterns, revealing a 45% Basic plan churn rate and key revenue loss drivers.</p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span><span class="project-tag">SQLite</span><span class="project-tag">Pandas</span><span class="project-tag">Matplotlib</span>
+  </div>
+
+  <div class="footer">SHOPMETRICS DASHBOARD · DATA UPDATED 2024 · BUILT BY PREETHI GANTA</div>
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────
+const allMonths = [
+  { month:"Jan", revenue:42000, orders:320 },
+  { month:"Feb", revenue:38500, orders:290 },
+  { month:"Mar", revenue:51000, orders:410 },
+  { month:"Apr", revenue:47800, orders:375 },
+  { month:"May", revenue:63200, orders:490 },
+  { month:"Jun", revenue:58900, orders:455 },
+  { month:"Jul", revenue:71400, orders:540 },
+  { month:"Aug", revenue:66700, orders:515 },
+  { month:"Sep", revenue:79300, orders:610 },
+  { month:"Oct", revenue:84500, orders:650 },
+  { month:"Nov", revenue:98700, orders:780 },
+  { month:"Dec", revenue:112000, orders:890 },
+];
+const categories = [
+  { name:"Electronics", value:38, color:"#00D4AA" },
+  { name:"Fashion",     value:27, color:"#FF6B6B" },
+  { name:"Home & Living",value:18,color:"#FFD93D" },
+  { name:"Beauty",      value:11, color:"#C77DFF" },
+  { name:"Sports",      value:6,  color:"#4ECDC4" },
+];
+const topProducts = [
+  { name:"iPhone 15 Pro",  sales:1240, revenue:148800, trend:"+12%" },
+  { name:"Samsung 4K TV",  sales:760,  revenue:152000, trend:"+21%" },
+  { name:"Dyson Airwrap",  sales:690,  revenue:103500, trend:"+5%"  },
+  { name:"Nike Air Max",   sales:980,  revenue:88200,  trend:"+8%"  },
+  { name:"Yoga Mat Pro",   sales:620,  revenue:37200,  trend:"+18%" },
+];
+const regions = [
+  { region:"East",    sales:31200, color:"#FFD93D" },
+  { region:"North",   sales:28400, color:"#00D4AA" },
+  { region:"South",   sales:21700, color:"#FF6B6B" },
+  { region:"West",    sales:19800, color:"#C77DFF" },
+  { region:"Central", sales:14300, color:"#4ECDC4" },
+];
+const traffic = [
+  { day:"Mon", visitors:4200, conversions:310 },
+  { day:"Tue", visitors:3800, conversions:280 },
+  { day:"Wed", visitors:5100, conversions:420 },
+  { day:"Thu", visitors:4700, conversions:390 },
+  { day:"Fri", visitors:6300, conversions:540 },
+  { day:"Sat", visitors:7800, conversions:680 },
+  { day:"Sun", visitors:5900, conversions:490 },
+];
+
+// ── CHART DEFAULTS ────────────────────────────────────
+Chart.defaults.color = "#8892b0";
+Chart.defaults.borderColor = "#1e2a45";
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+
+let revenueChart, categoryChart, trafficChart, regionChart;
+let currentPeriod = 12;
+
+// ── REVENUE CHART ─────────────────────────────────────
+function buildRevenueChart(months) {
+  const ctx = document.getElementById("revenueChart").getContext("2d");
+  const grad1 = ctx.createLinearGradient(0,0,0,300);
+  grad1.addColorStop(0,"rgba(0,212,170,0.35)");
+  grad1.addColorStop(1,"rgba(0,212,170,0)");
+  const grad2 = ctx.createLinearGradient(0,0,0,300);
+  grad2.addColorStop(0,"rgba(0,168,255,0.25)");
+  grad2.addColorStop(1,"rgba(0,168,255,0)");
+
+  if (revenueChart) revenueChart.destroy();
+  revenueChart = new Chart(ctx, {
+    type:"line",
+    data:{
+      labels: months.map(m=>m.month),
+      datasets:[
+        { label:"Revenue ($)", data:months.map(m=>m.revenue), borderColor:"#00D4AA", backgroundColor:grad1, borderWidth:2.5, pointRadius:3, pointBackgroundColor:"#00D4AA", fill:true, tension:0.4 },
+        { label:"Orders",      data:months.map(m=>m.orders),  borderColor:"#00a8ff", backgroundColor:grad2, borderWidth:2,   pointRadius:3, pointBackgroundColor:"#00a8ff", fill:true, tension:0.4 },
+      ]
+    },
+    options:{ responsive:true, plugins:{ legend:{ labels:{ color:"#8892b0", font:{size:12} } } }, scales:{ x:{ grid:{color:"#1e2a45"} }, y:{ grid:{color:"#1e2a45"} } } }
+  });
+}
+
+// ── CATEGORY PIE ──────────────────────────────────────
+function buildCategoryChart() {
+  const ctx = document.getElementById("categoryChart").getContext("2d");
+  if (categoryChart) categoryChart.destroy();
+  categoryChart = new Chart(ctx, {
+    type:"doughnut",
+    data:{
+      labels: categories.map(c=>c.name),
+      datasets:[{ data:categories.map(c=>c.value), backgroundColor:categories.map(c=>c.color), borderWidth:3, borderColor:"#0d1224", hoverOffset:6 }]
+    },
+    options:{ cutout:"65%", responsive:true, plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: ctx=> ` ${ctx.label}: ${ctx.raw}%` } } } }
+  });
+  // Legend
+  const leg = document.getElementById("catLegend");
+  leg.innerHTML = categories.map(c=>`
+    <div class="cat-row">
+      <div style="display:flex;align-items:center">
+        <div class="cat-dot" style="background:${c.color}"></div>
+        <span class="cat-name">${c.name}</span>
+      </div>
+      <span style="font-family:'DM Mono',monospace;font-size:13px;color:${c.color};font-weight:600">${c.value}%</span>
+    </div>`).join("");
+}
+
+// ── TRAFFIC CHART ─────────────────────────────────────
+function buildTrafficChart() {
+  const ctx = document.getElementById("trafficChart").getContext("2d");
+  if (trafficChart) trafficChart.destroy();
+  trafficChart = new Chart(ctx, {
+    type:"bar",
+    data:{
+      labels: traffic.map(d=>d.day),
+      datasets:[
+        { label:"Visitors",    data:traffic.map(d=>d.visitors),    backgroundColor:"rgba(0,168,255,0.75)", borderRadius:4 },
+        { label:"Conversions", data:traffic.map(d=>d.conversions), backgroundColor:"rgba(0,212,170,0.85)", borderRadius:4 },
+      ]
+    },
+    options:{ responsive:true, plugins:{ legend:{ labels:{ color:"#8892b0" } } }, scales:{ x:{ grid:{display:false} }, y:{ grid:{color:"#1e2a45"} } } }
+  });
+}
+
+// ── TOP PRODUCTS ──────────────────────────────────────
+function buildTopProducts() {
+  const container = document.getElementById("topProducts");
+  const maxRev = Math.max(...topProducts.map(p=>p.revenue));
+  container.innerHTML = topProducts.map((p,i)=>`
+    <div class="product-row">
+      <div class="product-rank ${i===0?'top':''}">${String(i+1).padStart(2,"0")}</div>
+      <div style="flex:1">
+        <div class="product-name">${p.name}</div>
+        <div class="product-bar-bg">
+          <div class="product-bar" style="width:${(p.revenue/maxRev*100).toFixed(0)}%"></div>
+        </div>
+      </div>
+      <div>
+        <div class="product-rev">$${(p.revenue/1000).toFixed(0)}K</div>
+        <div class="product-trend">${p.trend}</div>
+      </div>
+    </div>`).join("");
+}
+
+// ── REGION CHART ──────────────────────────────────────
+function buildRegionChart() {
+  const ctx = document.getElementById("regionChart").getContext("2d");
+  if (regionChart) regionChart.destroy();
+  regionChart = new Chart(ctx, {
+    type:"bar",
+    data:{
+      labels: regions.map(r=>r.region),
+      datasets:[{ label:"Sales ($)", data:regions.map(r=>r.sales), backgroundColor:regions.map(r=>r.color), borderRadius:6 }]
+    },
+    options:{
+      indexAxis:"y", responsive:true,
+      plugins:{ legend:{display:false} },
+      scales:{ x:{ grid:{color:"#1e2a45"} }, y:{ grid:{display:false} } }
+    }
+  });
+}
+
+// ── REGION BARS ───────────────────────────────────────
+function buildRegionBars() {
+  const total = regions.reduce((s,r)=>s+r.sales,0);
+  document.getElementById("regionBars").innerHTML = regions.map(r=>{
+    const pct = ((r.sales/total)*100).toFixed(1);
+    return `
+      <div class="region-row">
+        <div class="region-header">
+          <div class="region-name">
+            <div class="region-dot" style="background:${r.color}"></div>${r.region}
           </div>
-          <div class="project-link">Read case study →</div>
-        </div>
-      </a>
-      <a href="posts/E-commerce-Sales-Dashboard/Index.html" class="project-card">
-        <div class="project-card-top"></div>
-        <div class="project-card-body">
-          <div class="project-icon">🛒</div>
-          <div class="project-title">E-Commerce Sales Dashboard</div>
-          <p class="project-desc">Built an interactive sales dashboard tracking revenue trends, top products, and regional performance to enable data-driven business decisions.</p>
-          <div class="project-tags">
-            <span class="project-tag">Power BI</span><span class="project-tag">SQL</span><span class="project-tag">Excel</span><span class="project-tag">DAX</span>
+          <div>
+            <span class="region-val" style="color:${r.color}">$${(r.sales/1000).toFixed(1)}K</span>
+            <span class="region-pct">${pct}%</span>
           </div>
-          <div class="project-link">Read case study →</div>
         </div>
-      </a>
-      <a href="posts/Car Price Prediction/Prediction.html" class="project-card">
-        <div class="project-card-top"></div>
-        <div class="project-card-body">
-          <div class="project-icon">🚗</div>
-          <div class="project-title">Car Price Prediction</div>
-          <p class="project-desc">Built a machine learning regression model to predict car prices based on features like brand, mileage, year, and fuel type — with feature importance analysis.</p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span><span class="project-tag">Scikit-learn</span><span class="project-tag">Regression</span><span class="project-tag">Pandas</span>
-          </div>
-          <div class="project-link">Read case study →</div>
+        <div class="region-bar-bg">
+          <div class="region-bar" style="width:${pct}%;background:${r.color}"></div>
         </div>
-      </a>
-      <a href="posts/wine data/wine.html" class="project-card">
-        <div class="project-card-top"></div>
-        <div class="project-card-body">
-          <div class="project-icon">🍷</div>
-          <div class="project-title">Wine Quality Analysis</div>
-          <p class="project-desc">Analysed physicochemical properties of wines to predict quality scores using classification models and exploratory data analysis.</p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span><span class="project-tag">Seaborn</span><span class="project-tag">Classification</span><span class="project-tag">EDA</span>
-          </div>
-          <div class="project-link">Read case study →</div>
-        </div>
-      </a>
-      <a href="posts/Iris Data/Report.html" class="project-card">
-        <div class="project-card-top"></div>
-        <div class="project-card-body">
-          <div class="project-icon">🌸</div>
-          <div class="project-title">Iris Classification</div>
-          <p class="project-desc">Classic multiclass classification on the Iris dataset — exploring decision boundaries, model comparison, and visualising species clusters with pair plots.</p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span><span class="project-tag">Scikit-learn</span><span class="project-tag">Matplotlib</span><span class="project-tag">ML</span>
-          </div>
-          <div class="project-link">Read case study →</div>
-        </div>
-      </a>
-      <div class="project-card" style="cursor:default; opacity:0.55;">
-        <div class="project-card-top"></div>
-        <div class="project-card-body">
-          <div class="project-icon">⚙️</div>
-          <div class="project-title">More Coming Soon</div>
-          <p class="project-desc">Currently working on customer segmentation, cohort analysis, and predictive analytics projects. Stay tuned!</p>
-          <div class="project-tags">
-            <span class="project-tag">Tableau</span><span class="project-tag">Python</span><span class="project-tag">ML</span>
-          </div>
-          <div class="project-link" style="color:var(--muted);">In progress...</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </div>`;
+  }).join("");
+}
 
-<!-- CONTACT -->
-<section class="contact-bg">
-  <div class="contact-inner">
-    <div style="display:flex;justify-content:center;margin-bottom:24px;">
-      <span class="section-tag" style="color:var(--cyan);background:rgba(0,180,216,0.08);border-color:rgba(0,180,216,0.2);">Get In Touch</span>
-    </div>
-    <h2 style="font-family:'Clash Display',sans-serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;color:#fff;letter-spacing:-0.5px;margin-bottom:16px;">Let's Work Together</h2>
-    <p>I'm actively looking for Data Analyst opportunities. Whether you have a role, a project, or just want to talk data — I'd love to hear from you.</p>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/preethi-g-4b414b28b" target="_blank" class="social-link">
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-      <a href="https://github.com/Preethiganta07" target="_blank" class="social-link">
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <a href="mailto:preethiganta@email.com" class="social-link">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Email Me
-      </a>
-    </div>
-  </div>
-</section>
+// ── PRODUCT TABLE ─────────────────────────────────────
+function buildProductTable() {
+  document.getElementById("productTableBody").innerHTML = topProducts.map((p,i)=>`
+    <tr>
+      <td style="font-family:'DM Mono',monospace;color:${i===0?'#FFD93D':'#8892b0'}">#${i+1}</td>
+      <td style="font-weight:500">${p.name}</td>
+      <td style="font-family:'DM Mono',monospace;color:#ccd6f6">${p.sales.toLocaleString()}</td>
+      <td style="font-family:'DM Mono',monospace;color:#00D4AA;font-weight:600">$${p.revenue.toLocaleString()}</td>
+      <td><span class="badge">${p.trend}</span></td>
+      <td><div style="height:6px;background:#1e2a45;border-radius:3px;width:120px">
+        <div style="width:${(p.revenue/160000*100).toFixed(0)}%;height:100%;background:linear-gradient(90deg,#00D4AA,#00a8ff);border-radius:3px"></div>
+      </div></td>
+    </tr>`).join("");
+}
 
-<!-- FOOTER -->
-<footer class="pg-footer">
-  <p>Designed & built by <strong>Preethi Ganta</strong> · Data Analyst · 2025</p>
-</footer>
+// ── KPI UPDATE ────────────────────────────────────────
+function updateKPIs(months) {
+  const rev = months.reduce((s,m)=>s+m.revenue,0);
+  const ord = months.reduce((s,m)=>s+m.orders,0);
+  document.getElementById("kpi-rev").textContent    = "$"+Math.round(rev/1000)+"K";
+  document.getElementById("kpi-orders").textContent = ord.toLocaleString();
+  document.getElementById("kpi-aov").textContent    = "$"+Math.round(rev/ord);
+}
+
+// ── TAB SWITCH ────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll(".tab-panel").forEach(p=>p.classList.remove("active"));
+  document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+  document.getElementById("tab-"+name).classList.add("active");
+  event.target.classList.add("active");
+  if (name==="regions") { buildRegionChart(); buildRegionBars(); }
+}
+
+// ── PERIOD ────────────────────────────────────────────
+function setPeriod(n, btn) {
+  currentPeriod = n;
+  document.querySelectorAll(".period-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  const months = allMonths.slice(-n);
+  buildRevenueChart(months);
+  updateKPIs(months);
+}
+
+// ── INIT ──────────────────────────────────────────────
+buildRevenueChart(allMonths);
+buildCategoryChart();
+buildTrafficChart();
+buildTopProducts();
+buildProductTable();
+updateKPIs(allMonths);
+</script>
+</body>
+</html>
 ```
